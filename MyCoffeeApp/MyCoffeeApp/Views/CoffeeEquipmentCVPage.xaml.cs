@@ -15,6 +15,7 @@ namespace MyCoffeeApp.Views
         public CoffeeEquipmentCVPage()
         {
             InitializeComponent();
+
         }
     }
 }

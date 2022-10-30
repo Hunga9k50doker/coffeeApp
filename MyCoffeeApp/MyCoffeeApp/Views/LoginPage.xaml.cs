@@ -19,10 +19,10 @@ namespace MyCoffeeApp.Views
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
-            //var loggedin = true;
-            //if(loggedin)
-                await Shell.Current.GoToAsync($"//{nameof(CoffeeEquipmentPage)}");
+          //  base.OnAppearing();
+           // var loggedin = true;
+           // if(loggedin)
+             //   await Shell.Current.GoToAsync($"//{nameof(CoffeeEquipmentPage)}");
 
         }
 

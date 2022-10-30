@@ -20,6 +20,5 @@
             WidthRequest="335"
             HeightRequest="209"
            Source="{Binding Image}"/>
-            
 
 </ContentPage>

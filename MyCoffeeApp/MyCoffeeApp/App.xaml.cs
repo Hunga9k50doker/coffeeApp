@@ -14,7 +14,6 @@ namespace MyCoffeeApp
             InitializeComponent();
 
             //TheTheme.SetTheme();
-
             Barrel.ApplicationId = AppInfo.PackageName;
 
             MainPage = new AppShell();

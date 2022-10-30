@@ -55,6 +55,7 @@
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CoffeeEquipmentViewModel}}, Path=FavoriteCommand}"
                                     CommandParameter="{Binding .}"
                                     Text="Favorite" />
+                                
                                 <SwipeItem
                                     BackgroundColor="Red"
                                     IsDestructive="True"
@@ -70,7 +71,7 @@
                     <Label
                         HorizontalOptions="Center"
                         Style="{StaticResource LabelMedium}"
-                        Text="Coffee of the World" />
+                        Text="Recommand Coffee" />
                 </StackLayout>
             </CollectionView.Header>
             <CollectionView.Footer>

@@ -14,7 +14,21 @@ namespace MyCoffeeApp.Views
     {
         public RegistrationPage()
         {
+
             InitializeComponent();
         }
+
+        private async void Button_Clicked_Register(object sender, EventArgs e)
+        {
+            DisplayAlert("Notify", "Success!", "Ok");
+            await Shell.Current.GoToAsync($"//{nameof(CoffeeEquipmentPage)}");
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(LoginPage)}");
+
+        }
+
     }
 }

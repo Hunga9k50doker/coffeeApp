@@ -111,7 +111,6 @@
                         Value="{AppThemeBinding Dark={StaticResource CardBackgroundDark},
                     Light={StaticResource CardBackground}}"/>
             </Style>
-
             <x:String x:Key="IconCoffee">&#xf0f4;</x:String>
         </ResourceDictionary>
     </Application.Resources>

@@ -55,6 +55,8 @@ namespace FontAwesome
         /// See https://fontawesome.com/icons/acorn
         /// </summary>
         public const string Acorn = "\uf6ae";
+        public const string Home = "\uf015";
+
 
         /// <summary>
         /// fa-acquisitions-incorporated unicode value ("\uf6af").
@@ -4429,6 +4431,8 @@ namespace FontAwesome
         /// See https://fontawesome.com/icons/cog
         /// </summary>
         public const string Cog = "\uf013";
+        public const string Logout = "\uf2f5";
+
 
         /// <summary>
         /// fa-cogs unicode value ("\uf085").

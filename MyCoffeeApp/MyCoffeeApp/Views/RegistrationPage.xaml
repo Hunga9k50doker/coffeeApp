@@ -2,12 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyCoffeeApp.Views.RegistrationPage"
-             Shell.FlyoutBehavior="Disabled">
+             Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False"
+             Title="Register"
+             Background="#AA8666"
+             >
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Let's register!!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+            <StackLayout Padding="40" VerticalOptions="Center"
+                     HorizontalOptions="FillAndExpand">
+                <Label FontSize="20" Text="Username:"/>
+            <Entry Placeholder="Your Username" FontSize="18"  Opacity="0.5"  />
+                <Label Text="Password:" FontSize="20" Margin="0,10,0,0"/>
+            <Entry IsPassword="True" Placeholder="Your Password" FontSize="18"  Opacity="0.5"/>
+            <Label Text="Comfirm Password:" FontSize="20"  Margin="0,10,0,0"/>
+                <Entry IsPassword="True" Placeholder="Comfirm Password" FontSize="18" Opacity="0.5"/>
+            <Button Text="Register" Clicked="Button_Clicked_Register" Margin="0,20,0,0" BorderWidth="10" FontSize="16" FontAttributes="Bold" CornerRadius="4"/>
+            <FlexLayout AlignContent="Center" JustifyContent="Center" AlignItems="Center">
+                <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,20,0,20">
+                </BoxView>
+                <Label Text="or" FontSize="18" TextColor="Black" Margin="4"></Label>
+            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,20,0,20">
+                
+            </BoxView>
+            </FlexLayout>
+            <Button  Text="Login" FontSize="16" HorizontalOptions="Center" Clicked="TapGestureRecognizer_Tapped" WidthRequest="100" CornerRadius="4"/>
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

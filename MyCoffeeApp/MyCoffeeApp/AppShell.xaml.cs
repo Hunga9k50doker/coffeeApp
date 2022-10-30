@@ -1,4 +1,5 @@
 ﻿using MyCoffeeApp.Views;
+using System;
 using Xamarin.Forms;
 
 namespace MyCoffeeApp
@@ -17,6 +18,14 @@ namespace MyCoffeeApp
 
             Routing.RegisterRoute(nameof(RegistrationPage),
                 typeof(RegistrationPage));
+
+            Routing.RegisterRoute(nameof(LoginPage),
+              typeof(LoginPage));
+        }
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(RegistrationPage)}");
+
         }
     }
 }
