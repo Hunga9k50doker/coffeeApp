@@ -40,6 +40,9 @@
     <Compile Update="Views\AnimationPage.xaml.cs">
       <DependentUpon>AnimationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

@@ -54,7 +54,6 @@ namespace MyCoffeeApp.WebAPI.Controllers
             var coffee = Coffee.FirstOrDefault(c => c.Id == id);
             if (coffee == null)
                 return;
-
             Coffee.Remove(coffee);
         }
     }

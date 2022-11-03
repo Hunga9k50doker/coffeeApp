@@ -28,14 +28,15 @@ namespace MyCoffeeApp.Services
             await db.CreateTableAsync<Coffee>();
         }
 
-        public async Task AddCoffee(string name, string roaster)
+        public async Task AddCoffee(string name, string detail,float price)
         {
             await Init();
             var image = "coffeebag.png";
             var coffee = new Coffee
             {
                 Name = name,
-                Roaster = roaster,
+                Price = price,
+                Detail = detail,
                 Image = image
             };
 

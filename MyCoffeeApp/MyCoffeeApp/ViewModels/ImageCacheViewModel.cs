@@ -13,7 +13,7 @@ namespace MyCoffeeApp.ViewModels
         public UriImageSource Image { get; set; } =
             new UriImageSource
             {
-                Uri = new Uri("https://st4.depositphotos.com/14953852/24787/v/600/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg"),
+                Uri = new Uri("https://file.vfo.vn/hinh/2018/02/hinh-anh-cafe-dep-ly-cafe-ca-phe-sua-da-ca-phe-den-27.jpg"),
                 CachingEnabled = true,
                 CacheValidity = TimeSpan.FromMinutes(1)
             };
@@ -26,7 +26,7 @@ namespace MyCoffeeApp.ViewModels
             {
                 Image = new UriImageSource
                 {
-                    Uri = new Uri("https://images.wsdot.wa.gov/sw/005vc00032.jpg"),
+                    Uri = new Uri("https://file.vfo.vn/hinh/2018/02/hinh-anh-cafe-dep-ly-cafe-ca-phe-sua-da-ca-phe-den-27.jpg"),
                     CachingEnabled = true,
                     CacheValidity = TimeSpan.FromMinutes(1)
                 };

@@ -2,6 +2,7 @@
 using MvvmHelpers.Commands;
 using MyCoffeeApp.Services;
 using MyCoffeeApp.Shared.Models;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -33,8 +34,10 @@ namespace MyCoffeeApp.ViewModels
         async Task Add()
         {
             var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of coffee");
-            var roaster = await App.Current.MainPage.DisplayPromptAsync("Roaster", "Roaster of coffee");
-            await InternetCoffeeService.AddCoffee(name, roaster);
+            var detail = await App.Current.MainPage.DisplayPromptAsync("Detail", "detail of coffee");
+            var price = await App.Current.MainPage.DisplayPromptAsync("Price", "price of coffee");
+
+            await InternetCoffeeService.AddCoffee(name, detail, float.Parse(price, CultureInfo.InvariantCulture.NumberFormat));
             await Refresh();
         }
 

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="MyCoffeeApp.Views.CoffeeEquipmentCVPage"
+    x:Class="MyCoffeeApp.Views.HomePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
@@ -36,9 +36,9 @@
                 </StackLayout>
             </CollectionView.EmptyView>
             <CollectionView.GroupHeaderTemplate>
-                <DataTemplate x:DataType="{x:Null}">
+                <DataTemplate x:DataType="model:Coffee">
                     <StackLayout Padding="12">
-                        <Label Style="{StaticResource LabelMedium}" Text="{Binding Key}" />
+                        <Label Style="{StaticResource LabelMedium}" Text="{Binding Id}" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.GroupHeaderTemplate>
@@ -51,15 +51,14 @@
                         <SwipeView.RightItems>
                             <SwipeItems>
                                 <SwipeItem
-                                    BackgroundColor="Orange"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CoffeeEquipmentViewModel}}, Path=FavoriteCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Text="Favorite" />
-                                
-                                <SwipeItem
                                     BackgroundColor="Red"
                                     IsDestructive="True"
                                     Text="Delete" />
+                                <SwipeItem
+                                    BackgroundColor="LightGreen"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:CoffeeEquipmentViewModel}}, Path=FavoriteCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Favorite" />
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <cells:CoffeeCard/>
@@ -75,7 +74,7 @@
                 </StackLayout>
             </CollectionView.Header>
             <CollectionView.Footer>
-                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <FlexLayout HorizontalOptions="Center" JustifyContent="SpaceAround" AlignItems="Center" WidthRequest="100" Padding="10">
                     <Button
                         Command="{Binding LoadMoreCommand}"
                         Style="{StaticResource ButtonOutline}"
@@ -84,7 +83,7 @@
                         Command="{Binding ClearCommand}"
                         Style="{StaticResource ButtonOutline}"
                         Text="Clear" />
-                </StackLayout>
+                </FlexLayout>
             </CollectionView.Footer>
         </CollectionView>
     </RefreshView>

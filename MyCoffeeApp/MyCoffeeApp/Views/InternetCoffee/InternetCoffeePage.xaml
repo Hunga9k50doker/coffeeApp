@@ -55,7 +55,11 @@
                                         VerticalOptions="Center" />
                                     <Label
                                         FontSize="Large"
-                                        Text="{Binding Roaster}"
+                                        Text="{Binding Price}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        FontSize="Large"
+                                        Text="{Binding Detail}"
                                         VerticalOptions="Center" />
                                     <Label
                                         FontSize="Small"

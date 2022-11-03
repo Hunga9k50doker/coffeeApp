@@ -18,9 +18,12 @@
             <Label Text="Name:"
                    Style="{StaticResource LabelMedium}"/>
             <Entry Text="{Binding Name}" />
-            <Label Text="Roaster:"
+            <Label Text="Price:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Roaster}" />
+            <Entry Text="{Binding Price}" />
+            <Label Text="Detail:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding Detail}" />
 
             <ActivityIndicator
                 HorizontalOptions="Center"

@@ -59,9 +59,12 @@
                                         Style="{StaticResource LabelLarge}"
                                         Text="{Binding Name}"
                                         VerticalOptions="Center" />
+                                    <Label Text="{Binding Price}"
+                                         Style="{StaticResource LabelMedium}"/>
                                     <Label
+
                                         Style="{StaticResource LabelLarge}"
-                                        Text="{Binding Roaster}"
+                                        Text="{Binding Detail}"
                                         VerticalOptions="Center" />
                                     <Label
                                         Style="{StaticResource LabelSmall}"

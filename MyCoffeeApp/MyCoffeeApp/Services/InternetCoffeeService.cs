@@ -18,7 +18,7 @@ namespace MyCoffeeApp.Services
         //static string Baseurl = DeviceInfo.Platform == DevicePlatform.Android ?
         //                                    "http://10.0.2.2:5000" : "http://localhost:5000";
 
-        static string BaseUrl = "YOUR URL";
+        static string BaseUrl = "https://github.com/praeclarum/sqlite-net?WT.mc_id=friends-0000-jamont";
 
         static HttpClient client;
 
@@ -67,13 +67,14 @@ namespace MyCoffeeApp.Services
         }
 
         static Random random = new Random();
-        public static async Task AddCoffee(string name, string roaster)
+        public static async Task AddCoffee(string name, string detail,float price)
         {
             var image = "coffeebag.png";
             var coffee = new Coffee
             {
                 Name = name,
-                Roaster = roaster,
+                Detail = detail,
+                Price = price,
                 Image = image,
                 Id = random.Next(0, 10000)
             };

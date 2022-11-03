@@ -16,7 +16,11 @@
                         VerticalOptions="Center" />
                 <Label
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Roaster}"
+                        Text="{Binding Price}"
+                        VerticalOptions="Center" />
+                <Label
+                        Style="{StaticResource LabelLarge}"
+                        Text="{Binding Detail}"
                         VerticalOptions="Center" />
             </StackLayout>
         </StackLayout>

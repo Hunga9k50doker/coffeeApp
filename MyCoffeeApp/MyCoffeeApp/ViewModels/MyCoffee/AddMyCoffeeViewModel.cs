@@ -11,10 +11,13 @@ namespace MyCoffeeApp.ViewModels
     [QueryProperty(nameof(Name), nameof(Name))]
     public class AddMyCoffeeViewModel : ViewModelBase
     {
-        
-        string name, roaster;
+
+        string name, detail;
+            float price;
         public string Name { get => name; set => SetProperty(ref name, value); }
-        public string Roaster { get => roaster; set => SetProperty(ref roaster, value); }
+        public string Detail { get => detail; set => SetProperty(ref detail, value); }
+        public float Price { get => price; set => SetProperty(ref price, value); }
+
 
         public AsyncCommand SaveCommand { get; }
         ICoffeeService coffeeService;
@@ -27,13 +30,13 @@ namespace MyCoffeeApp.ViewModels
 
         async Task Save()
         {
-            if(string.IsNullOrWhiteSpace(name) ||
-                string.IsNullOrWhiteSpace(roaster))
+            if (string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(detail) )
             {
                 return;
             }
 
-            await coffeeService.AddCoffee(name, roaster);
+            await coffeeService.AddCoffee(name,detail,price);
 
             await Shell.Current.GoToAsync("..");
         }

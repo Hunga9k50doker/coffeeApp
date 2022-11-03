@@ -47,11 +47,11 @@ namespace MyCoffeeApp.ViewModels
             if (coffee == null)
                 return;
 
-            await Application.Current.MainPage.DisplayAlert("Favorite", coffee.Name, "OK");
+            await Application.Current.MainPage.DisplayAlert("Success!", "Added "+ coffee.Name + " to favorite", "OK");
 
         }
 
-        Coffee previouslySelected;
+        //Coffee previouslySelected;
         Coffee selectedCoffee;
         public Coffee SelectedCoffee
         {
@@ -91,16 +91,16 @@ namespace MyCoffeeApp.ViewModels
                 return;
 
             var image = "coffeebag.png";
-            Coffee.Add(new Coffee { Roaster = "Yes Plz", Name = "Sip of Sunshine", Image = image });
-            Coffee.Add(new Coffee { Roaster = "Yes Plz", Name = "Potent Potable", Image = image });
-            Coffee.Add(new Coffee { Roaster = "Yes Plz", Name = "Potent Potable", Image = image });
-            Coffee.Add(new Coffee { Roaster = "Blue Bottle", Name = "Kenya Kiambu Handege", Image = image });
-            Coffee.Add(new Coffee { Roaster = "Blue Bottle", Name = "Kenya Kiambu Handege", Image = image });
+            Coffee.Add(new Coffee { Detail = "Yes Plz", Name = "Sip of Sunshine", Price=10, Image = image });
+            Coffee.Add(new Coffee { Detail = "Yes Plz", Name = "Potent Potable", Price = 10, Image = image });
+            Coffee.Add(new Coffee { Detail = "Yes Plz", Name = "Potent Potable", Price = 10, Image = image });
+            Coffee.Add(new Coffee { Detail = "Blue Bottle", Name = "Kenya Kiambu Handege", Price = 10, Image = image });
+            Coffee.Add(new Coffee { Detail = "Blue Bottle", Name = "Kenya Kiambu Handege", Price = 10, Image = image });
 
             CoffeeGroups.Clear();
 
-            CoffeeGroups.Add(new Grouping<string, Coffee>("Blue Bottle", Coffee.Where(c => c.Roaster == "Blue Bottle")));
-            CoffeeGroups.Add(new Grouping<string, Coffee>("Yes Plz", Coffee.Where(c => c.Roaster == "Yes Plz")));
+            CoffeeGroups.Add(new Grouping<string, Coffee>("Blue Bottle", Coffee.Where(c => c.Detail == "Blue Bottle")));
+            CoffeeGroups.Add(new Grouping<string, Coffee>("Yes Plz", Coffee.Where(c => c.Detail == "Yes Plz")));
         }
 
         void DelayLoadMore()

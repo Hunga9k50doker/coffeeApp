@@ -105,7 +105,7 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Image Source="UITLogo.webp" Aspect="AspectFit" Grid.ColumnSpan="5" Grid.RowSpan="4" Opacity="0.4" />
+            <Image Source="coffee1.png" Aspect="AspectFit" Grid.ColumnSpan="5" Grid.RowSpan="4" Opacity="0.4" />
             <Frame 
     CornerRadius="50"
                 Padding="0" Grid.Column="1" Grid.Row="1">
@@ -134,9 +134,9 @@
                              Color="{AppThemeBinding 
                                     Dark=White, 
                                     Light={StaticResource SystemGray5Dark}}"
-                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Home}"/>
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.HomeIcon}"/>
         </FlyoutItem.Icon>
-        <ShellContent ContentTemplate="{DataTemplate local:CoffeeEquipmentCVPage}" Route="CoffeeEquipmentCVPage" />
+        <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage" />
     </FlyoutItem>
     
     <FlyoutItem Title="Coffee" >
@@ -197,7 +197,7 @@
         <ShellContent ContentTemplate="{DataTemplate local:InternetCoffeePage}" Route="InternetCoffeePage" />
     </FlyoutItem>-->
 
-    <FlyoutItem Title="Image Cache">
+    <!--<FlyoutItem Title="Image Cache">
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
@@ -206,9 +206,9 @@
                              Glyph="{x:Static fontAwesome:FontAwesomeIcons.Image}"/>
         </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate local:ImageCachePage}" Route="ImageCachePage" />
-    </FlyoutItem>
+    </FlyoutItem>-->
 
-    <FlyoutItem Title="Animations">
+    <!--<FlyoutItem Title="Animations">
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
@@ -217,7 +217,7 @@
                              Glyph="{x:Static fontAwesome:FontAwesomeIcons.Spinner}"/>
         </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate local:AnimationPage}" Route="AnimationPage" />
-    </FlyoutItem>
+    </FlyoutItem>-->
 
 
 
@@ -242,7 +242,7 @@
         </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" Route="LoginPage" />
     </FlyoutItem>
-    <Shell.FlyoutFooter>
+    <!--<Shell.FlyoutFooter>
         <StackLayout>
         <BoxView BackgroundColor="Red" HeightRequest="1"></BoxView>
         <FlexLayout Padding="10" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" AlignContent="Center" JustifyContent="Center">
@@ -267,5 +267,5 @@
         </FlexLayout>
         </StackLayout>
       
-    </Shell.FlyoutFooter>
+    </Shell.FlyoutFooter>-->
 </Shell>

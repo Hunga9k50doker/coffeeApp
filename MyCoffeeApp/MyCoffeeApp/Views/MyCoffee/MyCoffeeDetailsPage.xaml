@@ -13,12 +13,17 @@
         <StackLayout Padding="20">
             <Label Text="{Binding Name, StringFormat='Name: {0}'}"
                    Style="{StaticResource LabelMedium}"/>
-            <Label Text="{Binding Roaster, StringFormat='Roaster: {0}'}"
+            <Label Text="{Binding Price, StringFormat='Price: {0:0,0 $}'}"
+                   Style="{StaticResource LabelMedium}"/>
+            <Label Text="{Binding Detail, StringFormat='Detail: {0}'}"
                    Style="{StaticResource LabelMedium}" />
             <Image HorizontalOptions="Center" Source="{Binding Image}" />
-
-            <Button Clicked="Button_Clicked" Text="Done"
+            <FlexLayout>
+            <Button Clicked="Button_Clicked" Text="Add To Cart"
                     Style="{StaticResource ButtonOutline}"/>
+            <Button Clicked="Button_Clicked_1" Text="Delete"
+                    Style="{StaticResource ButtonOutline}"/>
+            </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

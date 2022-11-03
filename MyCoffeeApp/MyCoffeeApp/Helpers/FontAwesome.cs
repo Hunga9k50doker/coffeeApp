@@ -9553,7 +9553,7 @@ namespace FontAwesome
         /// <para/>
         /// See https://fontawesome.com/icons/home
         /// </summary>
-        public const string Home = "\uf015";
+        public const string HomeIcon= "\uf015";
 
         /// <summary>
         /// fa-home-alt unicode value ("\uf80a").

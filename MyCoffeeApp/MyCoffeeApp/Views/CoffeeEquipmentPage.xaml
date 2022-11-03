@@ -46,9 +46,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Clicked="ToolbarItem_Clicked" Text="Logout" />
-    </ContentPage.ToolbarItems>
 
     <ListView
         CachingStrategy="RecycleElement"
