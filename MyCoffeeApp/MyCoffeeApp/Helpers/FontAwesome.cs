@@ -15,9 +15,7 @@ namespace FontAwesome
         /// </summary>
         public const string FiveHundredPX = "\uf26e";
 
-        /// <summary>
-        /// fa-abacus unicode value ("\uf640").
-        /// <para/>
+       
         /// This icon supports the following styles: Light (Pro), Regular (Pro), Solid (Pro), Duotone (Pro)
         /// <para/>
         /// See https://fontawesome.com/icons/abacus
