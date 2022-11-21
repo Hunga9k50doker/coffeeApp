@@ -11,11 +11,6 @@ namespace FontAwesome
     /// </summary>
     public static partial class FontAwesomeIcons
     {
-        /// <summary>
-        /// fa-500px unicode value ("\uf26e").
-        /// <para/>
-        /// This icon supports the following styles: Brands
-        /// <para/>
         /// See https://fontawesome.com/icons/500px
         /// </summary>
         public const string FiveHundredPX = "\uf26e";
