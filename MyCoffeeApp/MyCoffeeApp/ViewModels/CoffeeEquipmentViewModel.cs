@@ -26,7 +26,6 @@ namespace MyCoffeeApp.ViewModels
         public CoffeeEquipmentViewModel()
         {
 
-            Title = "Coffee Equipment";
 
             Coffee = new ObservableRangeCollection<Coffee>();
             CoffeeGroups = new ObservableRangeCollection<Grouping<string, Coffee>>();
@@ -75,8 +74,7 @@ namespace MyCoffeeApp.ViewModels
 
         async Task Refresh()
         {
-            IsBusy = true;
-
+             IsBusy = true;
             await Task.Delay(2000);
 
             Coffee.Clear();

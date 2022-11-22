@@ -10,12 +10,6 @@
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}"
     >
-
-    <!--
-        The overall app visual hierarchy is defined here, along with navigation.
-        
-        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
-    -->
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -32,10 +26,7 @@
             <Style BasedOn="{StaticResource BaseStyle}" TargetType="TabBar" />
             <Style BasedOn="{StaticResource BaseStyle}" TargetType="FlyoutItem" />
 
-            <!--
-                Default Styles for all Flyout Items
-                https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyoutitem-and-menuitem-style-classes
-            -->
+
             <Style Class="FlyoutItemLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
             </Style>
@@ -63,9 +54,6 @@
                 </Setter>
             </Style>
 
-            <!--
-                Custom Style you can apply to any Flyout Item
-            -->
             <Style
                 ApplyToDerivedTypes="True"
                 Class="MenuItemLayoutStyle"
@@ -85,69 +73,22 @@
         </ResourceDictionary>
     </Shell.Resources>
 
- 
-    <!--
-        When the Flyout is visible this defines the content to display in the flyout.
-        FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element
-        https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
-    -->
-
-    <Shell.FlyoutHeader >
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="30"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Image Source="coffee1.png" Aspect="AspectFit" Grid.ColumnSpan="5" Grid.RowSpan="4" Opacity="0.4" />
-            <Frame 
-    CornerRadius="50"
-                Padding="0" Grid.Column="1" Grid.Row="1">
-                <Image Source="a1623035319438.jpg"
-    VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="80" WidthRequest="80" Aspect="AspectFill"/>
-            </Frame>
-            <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand">
-                <Label Text="Nguyễn Văn Hùng" Grid.Row="1" FontSize="18" Grid.Column="2" TextColor="Blue" FontAttributes="Bold"/>
-                <Label Text="19520101@gm.uit.edu.vn" Grid.Row="1" FontSize="16" Grid.Column="2" TextColor="Blue" FontAttributes="Bold"/>
-
-            </StackLayout>
-
-        </Grid>
-        <!--<Label Text="1234454"></Label>-->
-
-        <!--<local:HeaderContentView/>-->
-    </Shell.FlyoutHeader>
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
     </ShellItem>
-
-
-    <FlyoutItem Title="Home">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAS"
+    <TabBar Title="Coffee" FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True" >
+        <Tab Title="Home"  FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
                                     Dark=White, 
                                     Light={StaticResource SystemGray5Dark}}"
                              Glyph="{x:Static fontAwesome:FontAwesomeIcons.HomeIcon}"/>
-        </FlyoutItem.Icon>
-        <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage" />
-    </FlyoutItem>
-    
-    <FlyoutItem Title="Coffee" >
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAS"
-                             Color="{AppThemeBinding 
-                                    Dark=White, 
-                                    Light={StaticResource SystemGray5Dark}}"
-                             Glyph="{StaticResource IconCoffee}"/>
-        </FlyoutItem.Icon>
-        <Tab Title="Coffee">
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage" />
+        </Tab>
+
+        <Tab Title="Coffee" >
             <Tab.Icon>
                 <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
@@ -155,11 +96,21 @@
                                     Light={StaticResource SystemGray5Dark}}"
                              Glyph="{StaticResource IconCoffee}"/>
             </Tab.Icon>
-            <ShellContent Title="Light" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage" />
-            <ShellContent Title="Medium" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage2" />
-            <ShellContent Title="Dark" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage3" />
+                <ShellContent Title="Light" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage" />
+                <ShellContent Title="Medium" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage2" />
+                <ShellContent Title="Dark" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage3" />
         </Tab>
-        <Tab Title="Espresso">
+        <Tab Title="Order">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
+                             Color="{AppThemeBinding 
+                                    Dark=White, 
+                                    Light={StaticResource SystemGray5Dark}}"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.CartPlus}"/>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:OrderPage}" Route="OrderPage" />
+        </Tab>
+        <Tab Title="Favorite">
             <Tab.Icon>
                 <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
@@ -167,105 +118,19 @@
                                     Light={StaticResource SystemGray5Dark}}"
                              Glyph="{x:Static fontAwesome:FontAwesomeIcons.MugHot}"/>
             </Tab.Icon>
-            <ShellContent Title="tab 2" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage3" />
+            <ShellContent ContentTemplate="{DataTemplate local:MyStoredCoffeePage}" Route="MyStoredCoffeePage" />
         </Tab>
-    </FlyoutItem>
-
-   
-
-
-    <FlyoutItem Title="My Coffee">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAS"
-                             Color="{AppThemeBinding 
-                                    Dark=White, 
-                                    Light={StaticResource SystemGray5Dark}}"
-                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.MugHot}"/>
-        </FlyoutItem.Icon>
-        <ShellContent ContentTemplate="{DataTemplate local:MyStoredCoffeePage}" Route="MyStoredCoffeePage" />
-    </FlyoutItem>
-
-
-    <!--<FlyoutItem Title="Internet Coffee">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAS"
-                             Color="{AppThemeBinding 
-                                    Dark=White, 
-                                    Light={StaticResource SystemGray5Dark}}"
-                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Wifi}"/>
-        </FlyoutItem.Icon>
-        <ShellContent ContentTemplate="{DataTemplate local:InternetCoffeePage}" Route="InternetCoffeePage" />
-    </FlyoutItem>-->
-
-    <!--<FlyoutItem Title="Image Cache">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAS"
-                             Color="{AppThemeBinding 
-                                    Dark=White, 
-                                    Light={StaticResource SystemGray5Dark}}"
-                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Image}"/>
-        </FlyoutItem.Icon>
-        <ShellContent ContentTemplate="{DataTemplate local:ImageCachePage}" Route="ImageCachePage" />
-    </FlyoutItem>-->
-
-    <!--<FlyoutItem Title="Animations">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAS"
-                             Color="{AppThemeBinding 
-                                    Dark=White, 
-                                    Light={StaticResource SystemGray5Dark}}"
-                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Spinner}"/>
-        </FlyoutItem.Icon>
-        <ShellContent ContentTemplate="{DataTemplate local:AnimationPage}" Route="AnimationPage" />
-    </FlyoutItem>-->
-
-
-
-    <FlyoutItem Title="Settings">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAS"
+        <Tab Title="Settings">
+            <Tab.Icon>
+                <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
                                     Dark=White, 
                                     Light={StaticResource SystemGray5Dark}}"
                              Glyph="{x:Static fontAwesome:FontAwesomeIcons.Cog}"/>
-        </FlyoutItem.Icon>
-        <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" Route="SettingsPage" />
-    </FlyoutItem>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" Route="SettingsPage" />
+        </Tab>
+    </TabBar>
 
-    <FlyoutItem Title="Logout">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAS"
-                             Color="{AppThemeBinding 
-                                    Dark=White, 
-                                    Light={StaticResource SystemGray5Dark}}"
-                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Logout}"/>
-        </FlyoutItem.Icon>
-        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" Route="LoginPage" />
-    </FlyoutItem>
-    <!--<Shell.FlyoutFooter>
-        <StackLayout>
-        <BoxView BackgroundColor="Red" HeightRequest="1"></BoxView>
-        <FlexLayout Padding="10" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" AlignContent="Center" JustifyContent="Center">
-            <Image Source="logout.png" WidthRequest="30"
-                   >
-            </Image>
-              
-                <Label
-                HeightRequest="50"
-                WidthRequest="100"
-                FontFamily="FAS"
-                VerticalOptions="Center"
-                   VerticalTextAlignment="Center"
-                     TextColor="{AppThemeBinding 
-                                    Dark=White, 
-                                    Light={StaticResource SystemGray5Dark}}"
-               Text="Logout">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </FlexLayout>
-        </StackLayout>
-      
-    </Shell.FlyoutFooter>-->
+   
 </Shell>

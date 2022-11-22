@@ -18,6 +18,16 @@ namespace MyCoffeeApp.Views
             InitializeComponent();
 
         }
+
+        private void searchItem_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ImgAddToWishList_Tapped(object sender, EventArgs e)
+        {
+
+        }
         //protected override async void OnAppearing()
         //{
         //    base.OnAppearing();
