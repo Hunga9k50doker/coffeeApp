@@ -140,12 +140,6 @@
     <AndroidResource Include="Resources\drawable\icon_feed.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyCoffeeApp\MyCoffeeApp.csproj">
-      <Project>{F26C65BA-26F3-4634-8AB4-A5148AF07A74}</Project>
-      <Name>MyCoffeeApp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>

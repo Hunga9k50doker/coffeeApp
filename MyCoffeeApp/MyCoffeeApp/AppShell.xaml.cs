@@ -9,18 +9,19 @@ namespace MyCoffeeApp
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(RegistrationPage),
+                typeof(RegistrationPage));
 
-            Routing.RegisterRoute(nameof(AddMyCoffeePage),
+            /*Routing.RegisterRoute(nameof(AddMyCoffeePage),
                 typeof(AddMyCoffeePage));
 
             Routing.RegisterRoute(nameof(MyCoffeeDetailsPage),
                 typeof(MyCoffeeDetailsPage));
 
-            Routing.RegisterRoute(nameof(RegistrationPage),
-                typeof(RegistrationPage));
+            
 
             Routing.RegisterRoute(nameof(LoginPage),
-              typeof(LoginPage));
+              typeof(LoginPage));*/
         }
    
     }

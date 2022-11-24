@@ -230,12 +230,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\MyCoffeeApp\MyCoffeeApp.csproj">
-      <Project>{830B791C-E4FF-46DD-B362-EDF7B61E431F}</Project>
-      <Name>MyCoffeeApp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\coffeebag.png" />
   </ItemGroup>
   <ItemGroup>

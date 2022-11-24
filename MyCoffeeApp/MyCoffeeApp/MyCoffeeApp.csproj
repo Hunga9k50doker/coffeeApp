@@ -47,6 +47,7 @@
     <PackageReference Include="MonkeyCache.FileStore" Version="1.5.2" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+<<<<<<< Updated upstream
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="20.3.0.57" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="20.3.0.57" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="20.3.0.57" />
@@ -56,6 +57,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfMaps" Version="20.3.0.57" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="20.3.0.57" />
     <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="20.3.0.57" />
+=======
+    <PackageReference Include="sqlite-net-sqlcipher" Version="1.8.116" />
+>>>>>>> Stashed changes
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
