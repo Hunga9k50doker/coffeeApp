@@ -6,9 +6,9 @@
     xmlns:models="clr-namespace:MyCoffeeApp.Shared.Models;assembly=MyCoffeeApp.Shared"
     x:DataType="models:Coffee"
     Padding="10">
-    <Frame Style="{StaticResource CoffeeCard}">
+    <Frame Style="{StaticResource CoffeeCard}" >
         <StackLayout Orientation="Horizontal">
-            <Image Source="{Binding Image}" WidthRequest="66" />
+            <Image Source="{Binding Image}" WidthRequest="30" HeightRequest="30" Aspect="AspectFit" />
             <StackLayout VerticalOptions="Center">
                 <Label
                         Style="{StaticResource LabelLarge}"

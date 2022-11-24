@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:control="clr-namespace:MyCoffeeApp.Controls"
              x:Class="MyCoffeeApp.Views.RegistrationPage"
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
@@ -8,20 +8,58 @@
              Background="#AA8666"
              >
     <ContentPage.Content>
-            <StackLayout Padding="40" VerticalOptions="Start"
+            <StackLayout Padding="40,20,40,20" VerticalOptions="Start"
                      HorizontalOptions="StartAndExpand">
             <Image
                  HorizontalOptions="Center"
                 Source="coffee1.png"
                 WidthRequest="200"
                 ></Image>
-            <Label FontSize="18" Text="Username:"/>
-            <Entry Placeholder="Your Username" FontSize="16"  Opacity="0.5"  />
-                <Label Text="Password:" FontSize="18" Margin="0,10,0,0"/>
-            <Entry IsPassword="True" Placeholder="Your Password" FontSize="16"  Opacity="0.5"/>
-            <Label Text="Comfirm Password:" FontSize="18"  Margin="0,10,0,0"/>
-                <Entry IsPassword="True" Placeholder="Comfirm Password" FontSize="16" Opacity="0.5"/>
-            <Button Text="Register" Clicked="Button_Clicked_Register" Margin="0,20,0,0" BorderWidth="10" FontSize="16" FontAttributes="Bold" CornerRadius="4"/>
+            <Label FontSize="24" FontAttributes="Bold" Text="Wellcome Coffee App" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+            <border:SfBorder
+                        Grid.Row="3"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="LightYellow"
+                        Padding="12"
+                        CornerRadius="16"
+                      >
+                <control:BorderlessEntry
+                            x:Name="UsernameEntry"
+                            IsPassword="False"
+                            Placeholder="Username"
+                            TextColor="{DynamicResource Gray-56}" />
+            </border:SfBorder>
+            <Label  FontSize="18" Margin="0,10,0,0"/>
+            <border:SfBorder
+                        Grid.Row="3"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="LightYellow"
+                        Padding="12"
+                        CornerRadius="16"
+                      >
+                <control:BorderlessEntry
+                            x:Name="PasswordEntry"
+                            IsPassword="True"
+                            Placeholder="Password"
+                            TextColor="{DynamicResource Gray-56}" />
+            </border:SfBorder>
+            <Label  FontSize="18" Margin="0,10,0,0"/>
+            <border:SfBorder
+                        Grid.Row="3"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="LightYellow"
+                        Padding="12"
+                        CornerRadius="16"
+                      >
+                <control:BorderlessEntry
+                            x:Name="ConfirmPassword"
+                            IsPassword="True"
+                            Placeholder="Comfirm Password"
+                            TextColor="{DynamicResource Gray-56}" />
+            </border:SfBorder>
+            <Label  FontSize="18" Margin="0,10,0,0"/>
+            <Button
+                 BackgroundColor="LightGoldenrodYellow" Text="Register" Clicked="Button_Clicked_Register" Margin="0,20,0,0" BorderWidth="10" FontSize="16" FontAttributes="Bold" CornerRadius="16"/>
             <FlexLayout AlignContent="Center" JustifyContent="Center" AlignItems="Center">
                 <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,20,0,20">
                 </BoxView>
@@ -30,7 +68,8 @@
                 
             </BoxView>
             </FlexLayout>
-            <Button  Text="Login" FontSize="16" Clicked="TapGestureRecognizer_Tapped" WidthRequest="100" CornerRadius="4" FontAttributes="Bold"/>
+            <Button 
+                 BackgroundColor="LightGoldenrodYellow" Text="Login" FontSize="16" Clicked="TapGestureRecognizer_Tapped" WidthRequest="100" CornerRadius="16" FontAttributes="Bold"/>
             </StackLayout>
     </ContentPage.Content>
 </ContentPage>

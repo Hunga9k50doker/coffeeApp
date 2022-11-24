@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:models="clr-namespace:MyCoffeeApp.Shared.Models;assembly=MyCoffeeApp.Shared"
+             x:DataType="models:Coffee"
+             x:Class="MyCoffeeApp.Cells.CardCircle">
+    <ContentPage.Content>
+        <Grid>
+            <Image Source="{Binding Image}" WidthRequest="30" HeightRequest="30" Aspect="AspectFit" />
+            <StackLayout VerticalOptions="Center">
+                <Label
+                        Style="{StaticResource LabelLarge}"
+                        Text="{Binding Name}"
+                        VerticalOptions="Center" />
+                <Label
+                        Style="{StaticResource LabelLarge}"
+                        Text="{Binding Price}"
+                        VerticalOptions="Center" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,17 @@
-﻿using System;
+using Syncfusion.SfMaps.XForms.iOS;
+using Syncfusion.SfRotator.XForms.iOS;
+using Syncfusion.XForms.iOS.BadgeView;
+using Syncfusion.XForms.iOS.Cards;
+using Syncfusion.XForms.iOS.EffectsView;
+using Syncfusion.SfRating.XForms.iOS;
+using Syncfusion.XForms.iOS.ComboBox;
+using Syncfusion.XForms.iOS.TextInputLayout;
+using Syncfusion.XForms.iOS.Border;
+using Syncfusion.XForms.iOS.Graphics;
+using Syncfusion.XForms.iOS.Core;
+using Syncfusion.XForms.iOS.Buttons;
+using Syncfusion.ListView.XForms.iOS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,6 +42,22 @@ namespace MyCoffeeApp.iOS
         {
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
+            SfMapsRenderer.Init();
+            SfRotatorRenderer.Init();
+            SfCardViewRenderer.Init();
+            SfEffectsViewRenderer.Init();
+            SfBadgeViewRenderer.Init();
+            SfRatingRenderer.Init();
+            SfBorderRenderer.Init();
+            SfComboBoxRenderer.Init();
+            SfTextInputLayoutRenderer.Init();
+            SfAvatarViewRenderer.Init();
+            SfSegmentedControlRenderer.Init();
+            SfRadioButtonRenderer.Init();
+            Core.Init();
+            SfGradientViewRenderer.Init();
+            SfButtonRenderer.Init();
+            SfListViewRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

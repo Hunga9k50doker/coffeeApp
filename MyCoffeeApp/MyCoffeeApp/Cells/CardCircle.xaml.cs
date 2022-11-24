@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MyCoffeeApp.Views
+namespace MyCoffeeApp.Cells
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class InternetCoffeePage : ContentPage
+    public partial class CardCircle : ContentPage
     {
-        public InternetCoffeePage()
+        public CardCircle()
         {
             InitializeComponent();
         }
