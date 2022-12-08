@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCoffeeApp.Views.Payment"
+             xmlns:local="clr-namespace:MyCoffeeApp" 
+             xmlns:control="clr-namespace:MyCoffeeApp.Controls" 
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False"
+             Title="Login"
+             Background="#AA8666"
+             >
+    <ContentPage.Content>
+        <StackLayout Padding="40,20,40,20" VerticalOptions="Start"
+                     HorizontalOptions="Start">
+            <Label FontSize="20" FontAttributes="Bold" Text="Thông tin khách hàng" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+            <border:SfBorder
+                        Grid.Row="3"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="LightYellow"
+                        Padding="12"
+                        CornerRadius="16"
+                      >
+                <control:BorderlessEntry
+                            x:Name="nameuser"
+                            Placeholder="Tên khách hàng"
+                            TextColor="{DynamicResource Gray-56}" />
+            </border:SfBorder>
+            <Label Margin="0,4,0,0"/>
+            <border:SfBorder
+                        Grid.Row="3"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="LightYellow"
+                        Padding="12"
+                        CornerRadius="16"
+                      >
+                <control:BorderlessEntry
+                            x:Name="address"
+                            Placeholder="Địa chỉ"
+                            TextColor="{DynamicResource Gray-56}" />
+            </border:SfBorder>
+            <Label Margin="0,4,0,0"/>
+            <border:SfBorder
+                        Grid.Row="3"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="LightYellow"
+                        Padding="12"
+                        CornerRadius="16"
+                      >
+                <control:BorderlessEntry
+                            x:Name="phonenumber"
+                            Placeholder="Số điện thoại"
+                            TextColor="{DynamicResource Gray-56}" />
+            </border:SfBorder>
+            <FlexLayout AlignContent="Center" JustifyContent="Center">
+                <Label  Text="Tổng tiền:"   FontSize="18" Margin="0,10,0,0"/>
+                <Label FontSize="20" FontAttributes="Bold" x:Name="total" Margin="4,8,0,0" />
+            </FlexLayout>
+
+            <Button Text="Xác nhận thanh toán" Clicked="Button_Clicked" Margin="0,20,0,0" BorderWidth="10" FontSize="16" FontAttributes="Bold" CornerRadius="16"
+                    BackgroundColor="LightYellow"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

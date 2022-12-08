@@ -66,6 +66,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Cells\OrderCell.xaml.cs">
+      <DependentUpon>OrderCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PaymentSuccess.xaml.cs">
+      <DependentUpon>PaymentSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Payment.xaml.cs">
+      <DependentUpon>Payment.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\OtherCoffee.xaml.cs">
+      <DependentUpon>OtherCoffee.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Espresso.xaml.cs">
+      <DependentUpon>Espresso.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MyCoffee\EditMyCoffeePage.xaml.cs">
+      <DependentUpon>EditMyCoffeePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>

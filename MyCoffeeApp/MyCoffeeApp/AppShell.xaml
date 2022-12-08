@@ -77,7 +77,7 @@
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}"/>
     </ShellItem>
     <TabBar Title="Coffee" FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True" >
-        <Tab Title="Home"  FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True">
+        <Tab Title="Trang chủ"  FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True">
             <Tab.Icon>
                 <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
@@ -96,11 +96,11 @@
                                     Light={StaticResource SystemGray5Dark}}"
                              Glyph="{StaticResource IconCoffee}"/>
             </Tab.Icon>
-                <ShellContent Title="Light" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage" />
-                <ShellContent Title="Medium" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage2" />
-                <ShellContent Title="Dark" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage3" />
+                <ShellContent Title="Coffee" ContentTemplate="{DataTemplate local:CoffeeEquipmentPage}" Route="CoffeeEquipmentPage" />
+            <ShellContent Title="Espresso" ContentTemplate="{DataTemplate local:Espresso}" Route="CoffeeEquipmentPage2" />
+                <ShellContent Title="Other" ContentTemplate="{DataTemplate local:OtherCoffee}" Route="CoffeeEquipmentPage3" />
         </Tab>
-        <Tab Title="Order">
+        <Tab Title="Đơn hàng">
             <Tab.Icon>
                 <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
@@ -110,7 +110,7 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:OrderPage}" Route="OrderPage" />
         </Tab>
-        <Tab Title="Favorite">
+        <Tab Title="Yêu thích">
             <Tab.Icon>
                 <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 
@@ -120,7 +120,7 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:MyStoredCoffeePage}" Route="MyStoredCoffeePage" />
         </Tab>
-        <Tab Title="Settings">
+        <Tab Title="Cài đặt">
             <Tab.Icon>
                 <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 

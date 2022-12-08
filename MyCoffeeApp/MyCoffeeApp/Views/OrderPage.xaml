@@ -10,44 +10,121 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
     xmlns:cells="clr-namespace:MyCoffeeApp.Cells"
     x:Name="CoffeePage"
-    x:DataType="viewmodels:OrderViewModel"
+    Title="Giỏ hàng của tôi"
     BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 
                         Light={StaticResource WindowBackgroundColor}}">
-    <ContentPage.BindingContext>
-        <viewmodels:CoffeeEquipmentViewModel />
-    </ContentPage.BindingContext>
+        
+    <!--<ContentPage.BindingContext>
+        <viewmodels:OrderViewModel />
+    </ContentPage.BindingContext>-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter" />
-
-            <DataTemplate x:Key="Normal">
-                <ViewCell>
-                    <ViewCell.ContextActions>
-                        <MenuItem
-                            Command="{Binding Source={x:Reference CoffeePage}, Path=BindingContext.FavoriteCommand}"
-                            CommandParameter="{Binding .}"
-                            Text="Favorite" />
-                        <MenuItem IsDestructive="True" Text="Delete" />
-                    </ViewCell.ContextActions>
-                    <cells:CoffeeCard/>
-                </ViewCell>
-            </DataTemplate>
-            <DataTemplate x:Key="Special">
-                <ViewCell>
-                    <cells:SpecialCell/>
-                </ViewCell>
-            </DataTemplate>
-
-            <cells:CoffeeDataTemplateSelector x:Key="CoffeeSelector"
-                    Normal="{StaticResource Normal}"
-                    Special="{StaticResource Special}"/>
-
         </ResourceDictionary>
     </ContentPage.Resources>
 
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        Style="{StaticResource BaseRefreshView}">
+        <StackLayout>
+        <CollectionView
+            x:Name="cvcCart"
+            BackgroundColor="Transparent"
+            ItemSizingStrategy="MeasureAllItems"
+            ItemsLayout="VerticalList"
+            SelectionMode="Single">
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="{x:Null}">
+                    <StackLayout Padding="12">
+                        <Label Style="{StaticResource LabelMedium}" Text="{Binding Key}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView 
+                               BackgroundColor="{AppThemeBinding 
+                                Dark={StaticResource WindowBackgroundColorDark}, 
+                                Light={StaticResource WindowBackgroundColor}}">
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    BackgroundColor="LightGreen"
+                                     CommandParameter="{Binding .}"
+                                    x:Name="favorite"
+                                    Invoked="favorite_Invoked"
+                                    >
+                                    <SwipeItem.IconImageSource >
+                                        <FontImageSource FontFamily="FAS"
+                             Color="{AppThemeBinding 
+                                    Dark=White, 
+                                    Light={StaticResource SystemGray5Dark}}"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Hearts}"/>
+                                    </SwipeItem.IconImageSource>
+                                </SwipeItem>
+                                <SwipeItem
+                                    BackgroundColor="Red"
+                                    x:Name="delete"
+                                    CommandParameter="{Binding .}"
+                                    Invoked="delete_Invoked_1"
+                                   >
+                                    <SwipeItem.IconImageSource >
+                                        <FontImageSource FontFamily="FAS"
+                             Color="{AppThemeBinding 
+                                    Dark=White, 
+                                    Light={StaticResource SystemGray5Dark}}"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Trash}"/>
+                                    </SwipeItem.IconImageSource>
+                                </SwipeItem>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                            <FlexLayout Margin="20" JustifyContent="SpaceBetween">
+                                <Image Source="{Binding Image}" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
+                  />
+                                <StackLayout  Orientation="Vertical" 
+                        >
+                                    <Label
+                        Style="{StaticResource LabelLarge}"
+                        Text="{Binding Name}"
+                        VerticalOptions="Center"
+                    VerticalTextAlignment="Center"/>
+                                    <Label  
+                        TextColor="Brown"
+                        FontFamily="FAS"
+                        Style="{StaticResource LabelLarge}"
+                        Text="{Binding Price,StringFormat='{0:0}$'}"
+                        VerticalOptions="Center" 
+                   />
+                                </StackLayout>
+                                <FlexLayout AlignContent="Center" JustifyContent="Center" WidthRequest="140">
+                                    <Button Text="-" x:Name="down"  Clicked="Down_Clicked" WidthRequest="50" HeightRequest="50" Padding="0" CornerRadius="50"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                                    <Label x:Name="LabelCountDisplay" x:Uid="textCount" Text="{Binding Count}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="18"  WidthRequest="40" HeightRequest="40"  FontFamily="FAS"></Label>
+                                    <Button Text="+" x:Name="up" Clicked="Up_Clicked" WidthRequest="50" HeightRequest="50" CornerRadius="50" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                                </FlexLayout>
+                            </FlexLayout>
+                        </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+            <AbsoluteLayout Background="LightYellow" HeightRequest="60">
+            <FlexLayout JustifyContent="Center" AlignContent="Center">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,20,0,0" >
+                        <Label TextColor="Black"  Margin="20,0,0,0" Text="Tổng tiền:" FontSize="22" />
+                        <Label x:Name="total" Text="20" TextColor="#AA8666" FontSize="26" FontFamily="FAS"/>
+                        <Label Text="$" TextColor="#AA8666" Margin="0,0,20,0" FontSize="26" FontFamily="FAS" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <Button Clicked="Button_Clicked" Text="Thanh toán" Background="#AA8666" TextColor="White" HeightRequest="40" Margin="0,10,0,20" />
+            </FlexLayout>
+        </AbsoluteLayout>
+        </StackLayout>
+    </RefreshView>
+    
+    
+    <!--<StackLayout >
 
-    <ListView
+        <ListView
         CachingStrategy="RecycleElement"
         GroupDisplayBinding="{Binding Key}"
         IsGroupingEnabled="True"
@@ -72,27 +149,17 @@
                 </ViewCell>
             </DataTemplate>
         </ListView.GroupHeaderTemplate>
-        <ListView.Header>
-            <StackLayout Orientation="Horizontal">
-                <Label
-                    Margin="20"
-                    FontFamily="AC"
-                    HorizontalOptions="Center"
-                    Style="{StaticResource LabelLarge}"
-                    Text="Coffees of the World">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
-        </ListView.Header>
-        <ListView.Footer>
-            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                <Button
-                    Command="{Binding LoadMoreCommand}"
-                    Style="{StaticResource ButtonOutline}"
-                    Text="Load More" />
-            </StackLayout>
-        </ListView.Footer>
     </ListView>
+        <AbsoluteLayout>
+            <FlexLayout JustifyContent="Center" AlignContent="Center">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label  Margin="20,0,0,0" Text="Tổng tiền:" FontSize="22" />
+                    <Label Text="123$" TextColor="Brown" Margin="0,0,20,0" FontSize="26" FontFamily="FAS"/>
+                </StackLayout>
+                <Button Text="Thanh toán" Background="Blue" TextColor="White" HeightRequest="50" Margin="0,0,0,20"/>
+            </FlexLayout>
+        </AbsoluteLayout>
+    </StackLayout>-->
+
+    
 </ContentPage>

@@ -18,12 +18,12 @@ namespace MyCoffeeApp.ViewModels
         public AsyncCommand<Coffee> RemoveCommand { get; }
         public AsyncCommand<Coffee> SelectedCommand { get; }
 
-        ICoffeeService coffeeService;
+        CoffeeService coffeeService;
 
         public MyCoffeeViewModel()
         {
 
-            Title = "My Coffee";
+            Title = "Coffee của tôi";
 
             Coffee = new ObservableRangeCollection<Coffee>();
   
@@ -33,7 +33,7 @@ namespace MyCoffeeApp.ViewModels
             RemoveCommand = new AsyncCommand<Coffee>(Remove);
             SelectedCommand = new AsyncCommand<Coffee>(Selected);
 
-            coffeeService = DependencyService.Get<ICoffeeService>();
+            coffeeService = DependencyService.Get<CoffeeService>();
         }
 
         async Task Add()
@@ -53,33 +53,33 @@ namespace MyCoffeeApp.ViewModels
             if (coffee == null)
                 return;
 
-            var route = $"{nameof(MyCoffeeDetailsPage)}?CoffeeId={coffee.Id}";
+            var route = $"{nameof(MyCoffeeDetailsPage)}?CoffeeId={coffee.id}";
             await Shell.Current.GoToAsync(route);
         }
 
         async Task Remove(Coffee coffee)
         {
-            await coffeeService.RemoveCoffee(coffee.Id);
-            await Refresh();
+            //await coffeeService.RemoveCoffee(coffee);
+            //await Refresh();
         }
 
         async Task Refresh()
         {
-            IsBusy = true;
+            //            IsBusy = true;
 
-#if DEBUG
-            await Task.Delay(500);
-#endif
+            //#if DEBUG
+            //            await Task.Delay(500);
+            //#endif
 
-            Coffee.Clear();
+            //            Coffee.Clear();
 
-            var coffees = await coffeeService.GetCoffee();
+            //            var coffees = await coffeeService.GetCoffee();
 
-            Coffee.AddRange(coffees);
+            //            Coffee.AddRange(coffees);
 
-            IsBusy = false;
+            //            IsBusy = false;
 
-            DependencyService.Get<IToast>()?.MakeToast("Refreshed!");
+            //            DependencyService.Get<IToast>()?.MakeToast("Refreshed!");
         }
     }
 }

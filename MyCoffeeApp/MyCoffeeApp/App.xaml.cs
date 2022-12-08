@@ -13,6 +13,7 @@ namespace MyCoffeeApp
 {
     public partial class App : Application
     {
+        public static CoffeeService CoffeeDb = new CoffeeService();
         public static string ImageServerPath { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
 
         public App()

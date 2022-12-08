@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:models="clr-namespace:MyCoffeeApp.Shared.Models;assembly=MyCoffeeApp.Shared"
+    x:DataType="models:Coffee"
+             x:Class="MyCoffeeApp.Cells.OrderCell">
+  <ContentView.Content>
+        <FlexLayout Margin="20" JustifyContent="SpaceBetween">
+            <Image Source="{Binding Image}" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
+                  />
+            <StackLayout  Orientation="Vertical" 
+                        >
+                <Label
+                        Style="{StaticResource LabelLarge}"
+                        Text="{Binding Name}"
+                        VerticalOptions="Center"
+                    VerticalTextAlignment="Center"/>
+                <Label  
+                        TextColor="Brown"
+                        FontFamily="FAS"
+                        Style="{StaticResource LabelLarge}"
+                        Text="{Binding Price,StringFormat='{0:0}$'}"
+                        VerticalOptions="Center" 
+                   />
+            </StackLayout>
+                <FlexLayout AlignContent="Center" JustifyContent="Center" WidthRequest="140">
+                <Button Text="-" x:Name="down"  Clicked="Down_Clicked" WidthRequest="50" HeightRequest="50" Padding="0" CornerRadius="50"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                <Label x:Name="count" Text="1" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="18"  WidthRequest="40" HeightRequest="40"  FontFamily="FAS"> </Label>
+                <Button Text="+" x:Name="up" Clicked="Up_Clicked" WidthRequest="50" HeightRequest="50" CornerRadius="50" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                </FlexLayout>   
+        </FlexLayout>
+    </ContentView.Content>
+</ContentView>

@@ -14,7 +14,7 @@ using MyCoffeeApp.Helpers;
 using AndroidX.Core.View;
 using System.Threading.Tasks;
 
-[assembly: Dependency(typeof(Toaster))]
+//[assembly: Dependency(typeof(Toaster))]
 [assembly: Dependency(typeof(MyCoffeeApp.Droid.Environment))]
 
 namespace MyCoffeeApp.Droid
@@ -41,13 +41,13 @@ namespace MyCoffeeApp.Droid
         }
     }
 
-    public class Toaster : IToast
-    {
-        public void MakeToast(string message)
-        {
-            Toast.MakeText(Platform.AppContext, message, ToastLength.Long).Show();
-        }
-    }
+    //public class Toaster : IToast
+    //{
+    //    public void MakeToast(string message)
+    //    {
+    //        Toast.MakeText(Platform.AppContext, message, ToastLength.Long).Show();
+    //    }
+    //}
 
     public class Environment : IEnvironment
     {

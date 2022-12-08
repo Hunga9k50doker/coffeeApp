@@ -10,30 +10,144 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
     xmlns:cells="clr-namespace:MyCoffeeApp.Cells"
     x:Name="CoffeePage"
-    x:DataType="viewmodels:CoffeeEquipmentViewModel"
     BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 
                         Light={StaticResource WindowBackgroundColor}}">
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <viewmodels:CoffeeEquipmentViewModel />
-    </ContentPage.BindingContext>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter" />
+    </ContentPage.BindingContext>-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Thêm"
+                     x:Name="addCoffee"
+                     Clicked="addCoffee_Clicked">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <RefreshView
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        Style="{StaticResource BaseRefreshView}">
 
-            <DataTemplate x:Key="Normal">
-                <ViewCell>
+            <!--ItemsSource="{Binding CoffeeGroups}"-->
+        <CollectionView
+            x:Name="clsCoffee"
+            BackgroundColor="Transparent"
+            ItemSizingStrategy="MeasureAllItems"
+            ItemsLayout="VerticalList"
+            RemainingItemsThreshold="1"
+            SelectionChanged="CollectionView_SelectionChanged"
+            RemainingItemsThresholdReachedCommand="{Binding DelayLoadMoreCommand}"
+            SelectedItem="{Binding SelectedCoffee, Mode=TwoWay}"
+            SelectionMode="Single">
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate x:DataType="{x:Null}">
+                    <StackLayout Padding="12">
+                        <Label Style="{StaticResource LabelMedium}" Text="{Binding Key}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView 
+                               BackgroundColor="{AppThemeBinding 
+                                Dark={StaticResource WindowBackgroundColorDark}, 
+                                Light={StaticResource WindowBackgroundColor}}">
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem
+                                    BackgroundColor="LawnGreen"
+                                    Invoked="SwipeItem_Invoked"
+                                    CommandParameter="{Binding .}"
+                                    >
+                                    <SwipeItem.IconImageSource >
+                                        <FontImageSource
+                                            FontFamily="FAS"
+                                                           Color="LightYellow"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Hearts}"/>
+                                    </SwipeItem.IconImageSource>
+                                </SwipeItem>
+                                <SwipeItem
+                                    BackgroundColor="Yellow"
+                                     Invoked="SwipeItem_Invoked_1"
+                                    CommandParameter="{Binding .}"
+                                   >
+                                    <SwipeItem.IconImageSource >
+                                        <FontImageSource FontFamily="FAS"
+                                                           Color="GreenYellow"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.CartPlus}"/>
+                                    </SwipeItem.IconImageSource>
+                                </SwipeItem>
+                                <SwipeItem
+                                    BackgroundColor="Red"
+                                     Invoked="SwipeItem_Invoked_2"
+                                    CommandParameter="{Binding .}"
+                                   >
+                                    <SwipeItem.IconImageSource >
+                                        <FontImageSource FontFamily="FAS"
+                                                           Color="GreenYellow"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Trash}"/>
+                                    </SwipeItem.IconImageSource>
+                                </SwipeItem>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <cells:CoffeeCard/>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.Footer>
+                <FlexLayout AlignContent="Center" JustifyContent="Center">
+                    <!--Command="{Binding LoadMoreCommand}"-->
+                    <Button
+                        Clicked="Button_Clicked"
+                    Style="{StaticResource ButtonOutline}"
+                    Text="Xem thêm" />
+                </FlexLayout>
+            </CollectionView.Footer>
+        </CollectionView>
+    </RefreshView>
+
+
+    <!--<DataTemplate x:Key="Normal">-->
+                <!--<SwipeView>
+                    <SwipeView.RightItems>
+                        <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+                            <SwipeItem Text="Xóa" BackgroundColor="red" x:Name="delete"
+                                              IsDestructive="True">
+
+                            </SwipeItem>
+                            <SwipeItem Text="Thêm vào mục yêu thích" BackgroundColor="LightGreen" x:Name="update"
+                                              Command="{Binding Source={x:Reference CoffeePage}, Path=BindingContext.FavoriteCommand}"
+                            CommandParameter="{Binding .}">
+                            </SwipeItem>
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                    <Grid HeightRequest="60" Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding image}" Grid.Row="0" Grid.Column="0" Aspect="Fill"/>
+                        <Label Text="{Binding name}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"
+                                       Grid.Column="1" Grid.Row="0"/>
+                    </Grid>
+                </SwipeView>-->
+                <!--<ViewCell>
                     <ViewCell.ContextActions>
                         <MenuItem
                             Command="{Binding Source={x:Reference CoffeePage}, Path=BindingContext.FavoriteCommand}"
                             CommandParameter="{Binding .}"
-                            Text="Favorite" />
-                        <MenuItem IsDestructive="True" Text="Delete" />
+                            Text="Thêm vào mục yêu thích" />
+                        <MenuItem IsDestructive="True" Text="Xóa" />
                     </ViewCell.ContextActions>
                     <cells:CoffeeCard/>
                 </ViewCell>
-            </DataTemplate>
-            <DataTemplate x:Key="Special">
+            </DataTemplate>-->
+            
+            <!--<DataTemplate x:Key="Special">
                 <ViewCell>
                     <cells:SpecialCell/>
                 </ViewCell>
@@ -43,8 +157,6 @@
                     Normal="{StaticResource Normal}"
                     Special="{StaticResource Special}"/>
 
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
 
     <ListView
@@ -59,7 +171,7 @@
         ItemTemplate="{StaticResource CoffeeSelector}">
         <ListView.Behaviors>
             <xct:EventToCommandBehavior
-                Command="{Binding SelectedCommand}"
+                Command="{Binding SelectedDetailCommand}"
                 EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"
                 EventName="ItemSelected" />
         </ListView.Behaviors>
@@ -72,27 +184,8 @@
                 </ViewCell>
             </DataTemplate>
         </ListView.GroupHeaderTemplate>
-        <ListView.Header>
-            <StackLayout Orientation="Horizontal">
-                <Label
-                    Margin="20"
-                    FontFamily="AC"
-                    HorizontalOptions="Center"
-                    Style="{StaticResource LabelLarge}"
-                    Text="Coffees of the World">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
-        </ListView.Header>
         <ListView.Footer>
-            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                <Button
-                    Command="{Binding LoadMoreCommand}"
-                    Style="{StaticResource ButtonOutline}"
-                    Text="Load More" />
-            </StackLayout>
+           
         </ListView.Footer>
-    </ListView>
+    </ListView>-->
 </ContentPage>

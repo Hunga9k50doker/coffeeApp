@@ -1,5 +1,6 @@
 ﻿using MvvmHelpers;
 using MvvmHelpers.Commands;
+using MyCoffeeApp.Services;
 using MyCoffeeApp.Shared.Models;
 using MyCoffeeApp.Views;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace MyCoffeeApp.ViewModels
 {
     public class OrderViewModel : ViewModelBase
     {
+        CoffeeService coffeeService;
+
         public ObservableRangeCollection<Coffee> Coffee { get; set; }
         public ObservableRangeCollection<Grouping<string, Coffee>> CoffeeGroups { get; }
 
@@ -25,8 +28,6 @@ namespace MyCoffeeApp.ViewModels
 
         public OrderViewModel()
         {
-
-            Title = "My cart";
 
             Coffee = new ObservableRangeCollection<Coffee>();
             CoffeeGroups = new ObservableRangeCollection<Grouping<string, Coffee>>();
@@ -46,8 +47,9 @@ namespace MyCoffeeApp.ViewModels
         {
             if (coffee == null)
                 return;
-
-            await Application.Current.MainPage.DisplayAlert("Success!", "Added "+ coffee.Name + " to favorite", "OK");
+            coffeeService = DependencyService.Get<CoffeeService>();
+            //await coffeeService.AddCoffee(coffee.Name, coffee.Image, coffee.Detail, coffee.Price);
+            await Application.Current.MainPage.DisplayAlert("Thông báo", "Đã thêm "+ coffee.Name + " vào mục yêu thích", "Đóng");
 
         }
 
@@ -89,18 +91,16 @@ namespace MyCoffeeApp.ViewModels
         {
             if (Coffee.Count >= 20)
                 return;
-
-            var image = "coffeebag.png";
-            Coffee.Add(new Coffee { Detail = "Yes Plz", Name = "Sip of Sunshine", Price=10, Image = image });
-            Coffee.Add(new Coffee { Detail = "Yes Plz", Name = "Potent Potable", Price = 10, Image = image });
-            Coffee.Add(new Coffee { Detail = "Yes Plz", Name = "Potent Potable", Price = 10, Image = image });
-            Coffee.Add(new Coffee { Detail = "Blue Bottle", Name = "Kenya Kiambu Handege", Price = 10, Image = image });
-            Coffee.Add(new Coffee { Detail = "Blue Bottle", Name = "Kenya Kiambu Handege", Price = 10, Image = image });
+            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Dolce Latte", Price = 15, Image = "asian_dolce_latte.jpg" });
+            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Vanila Latte", Price = 12, Image = "asset_vanilla_latte.jpg" });
+            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Americano", Price = 11, Image = "caffe_americano.jpg" });
+            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Latte", Price = 6, Image = "caffee_latte.jpg" });
+            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Mocha", Price = 5, Image = "caffee_mocha.jpg" });
 
             CoffeeGroups.Clear();
 
-            CoffeeGroups.Add(new Grouping<string, Coffee>("Blue Bottle", Coffee.Where(c => c.Detail == "Blue Bottle")));
-            CoffeeGroups.Add(new Grouping<string, Coffee>("Yes Plz", Coffee.Where(c => c.Detail == "Yes Plz")));
+            CoffeeGroups.Add(new Grouping<string, Coffee>("", Coffee.Where(c => true)));
+            //CoffeeGroups.Add(new Grouping<string, Coffee>("", Coffee.Where(c => c.Detail == "")));
         }
 
         void DelayLoadMore()

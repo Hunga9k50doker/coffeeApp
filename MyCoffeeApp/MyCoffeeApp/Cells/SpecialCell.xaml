@@ -22,14 +22,15 @@
                         FontFamily="FAS"
                         LineBreakMode="TailTruncation"
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Price,StringFormat='{0:0,0 $}'}"
+                        Text="{Binding Price,StringFormat='{0:0 $}'}"
                         VerticalOptions="Center" 
                    />
                 <Label
+                        x:Name="priceSale"
                         FontFamily="FAS"
                         LineBreakMode="TailTruncation"
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Price,StringFormat='{0:0,0 $}'}"
+                        Text="{Binding Price,StringFormat='{0:0 $}'}"
                         VerticalOptions="Center" 
                    />
             </StackLayout>

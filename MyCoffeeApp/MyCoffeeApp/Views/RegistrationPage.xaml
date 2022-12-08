@@ -4,7 +4,6 @@
              x:Class="MyCoffeeApp.Views.RegistrationPage"
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
-             Title="Register"
              Background="#AA8666"
              >
     <ContentPage.Content>
@@ -26,7 +25,7 @@
                 <control:BorderlessEntry
                             x:Name="UsernameEntry"
                             IsPassword="False"
-                            Placeholder="Username"
+                            Placeholder="Tên đăng nhập"
                             TextColor="{DynamicResource Gray-56}" />
             </border:SfBorder>
             <Label  FontSize="18" Margin="0,10,0,0"/>
@@ -40,7 +39,7 @@
                 <control:BorderlessEntry
                             x:Name="PasswordEntry"
                             IsPassword="True"
-                            Placeholder="Password"
+                            Placeholder="Mật khẩu"
                             TextColor="{DynamicResource Gray-56}" />
             </border:SfBorder>
             <Label  FontSize="18" Margin="0,10,0,0"/>
@@ -54,22 +53,27 @@
                 <control:BorderlessEntry
                             x:Name="ConfirmPassword"
                             IsPassword="True"
-                            Placeholder="Comfirm Password"
+                            Placeholder="Xác nhận mật khẩu"
                             TextColor="{DynamicResource Gray-56}" />
             </border:SfBorder>
             <Label  FontSize="18" Margin="0,10,0,0"/>
             <Button
-                 BackgroundColor="LightGoldenrodYellow" Text="Register" Clicked="Button_Clicked_Register" Margin="0,20,0,0" BorderWidth="10" FontSize="16" FontAttributes="Bold" CornerRadius="16"/>
-            <FlexLayout AlignContent="Center" JustifyContent="Center" AlignItems="Center">
-                <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,20,0,20">
+                 BackgroundColor="LightGoldenrodYellow" Text="Đăng ký" Clicked="Button_Clicked_Register" Margin="0,20,0,0" BorderWidth="10" FontSize="16" FontAttributes="Bold" CornerRadius="16"/>
+             <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,20,0,20">
                 </BoxView>
-                <Label Text="or" FontSize="18" TextColor="Black" Margin="4"></Label>
-            <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0,20,0,20">
-                
-            </BoxView>
+            <FlexLayout AlignContent="Center" JustifyContent="Center" AlignItems="Center">
+                <Label Text="Bạn đã có tài khoản?" FontSize="18" TextColor="Black" Margin="4">
+                </Label>
+                <Label Text="Đăng nhập" FontSize="18"  TextColor="Blue" Margin="4"  x:Name="TapGestureRecognizer_Tapped">
+                    <!--<Label.GestureRecognizers  >
+                        <TapGestureRecognizer
+                            Command="{Binding TapGestureRecognizer_Tapped}"
+                            />
+                    </Label.GestureRecognizers >-->
+                </Label>
             </FlexLayout>
-            <Button 
-                 BackgroundColor="LightGoldenrodYellow" Text="Login" FontSize="16" Clicked="TapGestureRecognizer_Tapped" WidthRequest="100" CornerRadius="16" FontAttributes="Bold"/>
+            <!--<Button 
+                 BackgroundColor="LightGoldenrodYellow" Text="Login" FontSize="16" Clicked="TapGestureRecognizer_Tapped" WidthRequest="100" CornerRadius="16" FontAttributes="Bold"/>-->
             </StackLayout>
     </ContentPage.Content>
 </ContentPage>

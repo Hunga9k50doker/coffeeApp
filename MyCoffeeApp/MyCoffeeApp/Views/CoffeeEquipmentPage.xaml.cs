@@ -1,6 +1,9 @@
-﻿using MyCoffeeApp.ViewModels;
+﻿using MyCoffeeApp.Services;
+using MyCoffeeApp.Shared.Models;
+using MyCoffeeApp.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,28 +15,87 @@ namespace MyCoffeeApp.Views
 {
     public partial class CoffeeEquipmentPage : ContentPage
     {
+        private readonly CoffeeService _cfDatabase = new CoffeeService();
+        public List<Coffee> list;
         public CoffeeEquipmentPage()
         {
             InitializeComponent();
-
+           list = _cfDatabase.GetCoffee();
+            clsCoffee.ItemsSource = list;
         }
 
-      
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        protected override  void OnAppearing()
         {
-            var random = new Random();
-            var random1 = (int)random.Next(0, 255);
-            var random2 = (int)random.Next(0, 255);
-            var random3 = (int)random.Next(0, 255);
-            App.Current.Resources["WindowBackgroundColor"] = Color.FromRgb(random1, random2, random3);
+            base.OnAppearing();
+            list = _cfDatabase.GetCoffee();
+            clsCoffee.ItemsSource = list;
+        }
+        private void addCoffee_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddMyCoffeePage());
         }
 
-        //protected override async void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    var vm = (MyCoffeeViewModel)BindingContext;
-        //    if (vm.Coffee.Count == 0)
-        //        await vm.RefreshCommand.ExecuteAsync();
-        //}
+        private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Coffee animalItem = (Coffee)e.;
+            var cf = clsCoffee.SelectedItem as Coffee;
+            Navigation.PushAsync(new MyCoffeeDetailsPage(cf.Name, cf.Price, cf.Detail, cf.Image));
+
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            list.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Americano", Price = 12, Image = "caffe_americano.jpg" });
+            list.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Vanilla Latte", Price = 11, Image = "asset_vanilla_latte.jpg" });
+            list.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Latte", Price = 6, Image = "caffee_latte.jpg" });
+            list.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Mocha", Price = 5, Image = "caffee_mocha.jpg" });
+            clsCoffee.ItemsSource = list;
+
+        }
+
+        private async void SwipeItem_Invoked(object sender, EventArgs e)
+        {
+            var swItem = sender as SwipeItem;
+            var ct = swItem.CommandParameter as Coffee;
+            var cf = new Favorite
+            {
+                Name = ct.Name,
+                Detail = ct.Detail,
+                Image = ct.Image,
+                Price = ct.Price,
+            };
+            if (App.CoffeeDb.AddCoffeeToFav(cf))
+            {
+                await DisplayAlert("Thông báo", $"Đã thêm {cf.Name} vào mục yêu thích.", "Đóng");
+            }
+        }
+
+        private async void SwipeItem_Invoked_1(object sender, EventArgs e)
+        {
+            var swItem = sender as SwipeItem;
+            var ct = swItem.CommandParameter as Coffee;
+            var cf = new Cart
+            {
+                Name = ct.Name,
+                Detail = ct.Detail,
+                Image = ct.Image,
+                Price = ct.Price,
+                Count = 1,
+            };
+            if (App.CoffeeDb.AddCoffeeToCart(cf))
+            {
+                await DisplayAlert("Thông báo", $"Đã thêm {cf.Name} vào giỏ hàng.", "Đóng");
+            }
+        }
+
+        private async void SwipeItem_Invoked_2(object sender, EventArgs e)
+        {
+            var swItem = sender as SwipeItem;
+            var ct = swItem.CommandParameter as Coffee;
+            if (App.CoffeeDb.RemoveCoffee(ct))
+            {
+                await DisplayAlert("Thông báo", $"Đã xoas {ct.Name} thành công.", "Đóng");
+            }
+        }
     }
 }

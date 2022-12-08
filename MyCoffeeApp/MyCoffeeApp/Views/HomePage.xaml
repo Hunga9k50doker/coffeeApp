@@ -8,41 +8,58 @@
     xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
     xmlns:viewmodels="clr-namespace:MyCoffeeApp.ViewModels" 
     xmlns:fontAwesome="clr-namespace:FontAwesome"
-    xmlns:cells="clr-namespace:MyCoffeeApp.Cells"
+    xmlns:cells="clr-namespace:MyCoffeeApp.Cells" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="CoffeePage"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
     <ContentPage.BindingContext>
         <viewmodels:CoffeeEquipmentViewModel />
+        <!--<viewmodels:MyCoffeeViewModel />-->
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <RefreshView
         Command="{Binding RefreshCommand}"
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         Style="{StaticResource BaseRefreshView}">
         <!--Horizontal list-->
+        
     <ScrollView>
         <StackLayout>
             <Image Source="brandcoffee.jpg"></Image>
-            <CollectionView
-                HeightRequest="300"
-            BackgroundColor="Transparent"
+                    <Label
+                        Margin="20,40,0,0"
+                        FontFamily="FAS"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelMedium}"
+                        Text="Hot" />
+                    <BoxView HeightRequest="1" WidthRequest="90"   Margin="20,0,0,0" BackgroundColor="{AppThemeBinding 
+                    Dark={StaticResource WindowBackgroundColor}, 
+                    Light={StaticResource WindowBackgroundColorDark}}" />
+                <CollectionView
+                    x:Name="cvcCoffee_1"
+                HeightRequest="240"
+            BackgroundColor="White"
             IsGrouped="True"
             ItemSizingStrategy="MeasureAllItems"
             ItemsLayout="HorizontalList"
             RemainingItemsThreshold="1"
+            SelectionChanged="CollectionView_SelectionChanged_1"
             ItemsSource="{Binding CoffeeGroups}"
             RemainingItemsThresholdReachedCommand="{Binding DelayLoadMoreCommand}"
-            SelectedItem="{Binding SelectedCoffee, Mode=TwoWay}"
             SelectionMode="Single">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate >
                         <SwipeView
                             android:SwipeView.SwipeTransitionMode="Drag"
                                BackgroundColor="{AppThemeBinding 
                                 Dark={StaticResource WindowBackgroundColorDark}, 
                                 Light={StaticResource WindowBackgroundColor}}">
-                                <StackLayout Margin="20,20,10,20" Padding="16" BackgroundColor="#fff" VerticalOptions="End" >
+                                <StackLayout Margin="20,20,10,20" Padding="16" BackgroundColor="#EED39E" VerticalOptions="FillAndExpand"  >
                                     <Image Source="{Binding Image}" WidthRequest="30" HeightRequest="80" Aspect="AspectFit"
                   />
                                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center"
@@ -54,16 +71,16 @@
                                 Text="{Binding Name}"
                                 VerticalOptions="Center"
                                />
-                                        <FlexLayout AlignContent="Center" JustifyContent="Start">
-                                            
+                                        <FlexLayout AlignContent="Center" JustifyContent="SpaceBetween">
+                                            <StackLayout Orientation="Horizontal">
                                                 <Label  
                                 TextColor="OrangeRed"
                                 TextDecorations="Strikethrough"
                                 FontFamily="FAS"
                                 LineBreakMode="TailTruncation"
                                 Style="{StaticResource LabelLarge}"
-                                Text="{Binding Price,StringFormat='{0:0,0 $}'}"
-                                                                           HorizontalTextAlignment="Center"
+                                Text="{Binding Price,StringFormat='{0:0 $}'}"
+                                HorizontalTextAlignment="Center"
 
                    />
                                         <Label
@@ -71,21 +88,35 @@
                         FontFamily="FAS"
                         LineBreakMode="TailTruncation"
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Price,StringFormat='{0:0,0 $}'}"
+                        Text="{Binding Price,StringFormat='{0:0 $}'}"
                         VerticalOptions="Center" 
                                             HorizontalTextAlignment="Center"
-                                            
                    />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="FavouriteBlackIcon.png"
+                                           VerticalOptions="Center"
+                                           Aspect="AspectFill" HeightRequest="20" WidthRequest="20">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="ImgAddToWishList" Tapped="ImgAddToWishList_Tapped"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Image Source="AddToCartIcon.png"
+                                           VerticalOptions="Center"
+                                           Aspect="Fill" HeightRequest="20" WidthRequest="20">
+
+                                                </Image>
+                                            </StackLayout>
                                         </FlexLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-                <CollectionView.Header>
+                <!--<CollectionView.Header>
                     <StackLayout Orientation="Horizontal">
                     </StackLayout>
-                </CollectionView.Header>
+                </CollectionView.Header>-->
             </CollectionView>
             <!--Vertical list-->
                 <StackLayout Margin="0,40,0,0">
@@ -94,7 +125,7 @@
                         FontFamily="FAS"
                         HorizontalOptions="Start"
                         Style="{StaticResource LabelMedium}"
-                        Text="Recommand Coffee" />
+                        Text="Recommand" />
                     <BoxView HeightRequest="1" WidthRequest="90"   Margin="20,0,20,0" BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColor}, 
                     Light={StaticResource WindowBackgroundColorDark}}" />
@@ -104,26 +135,16 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
             <CollectionView
+              x:Name="cvcCoffee_2"
             BackgroundColor="Transparent"
             IsGrouped="True"
             ItemSizingStrategy="MeasureAllItems"
             ItemsSource="{Binding CoffeeGroups}"
             RemainingItemsThreshold="1"
             RemainingItemsThresholdReachedCommand="{Binding DelayLoadMoreCommand}"
-            SelectedItem="{Binding SelectedCoffee, Mode=TwoWay}"
-            SelectionMode="Single">
-                        <!--<CollectionView.EmptyView>
-                <StackLayout Padding="12">
-                    <Label HorizontalOptions="Center" Text="No coffee" />
-                </StackLayout>
-            </CollectionView.EmptyView>-->
-            <!--<CollectionView.GroupHeaderTemplate>
-                <DataTemplate x:DataType="model:Coffee">
-                    <StackLayout Padding="12">
-                        <Label Style="{StaticResource LabelMedium}" Text="{Binding Id}" />
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.GroupHeaderTemplate>-->
+            SelectionMode="Single"
+            SelectionChanged="CollectionView_SelectionChanged"
+                >
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Vertical"
                         Span="2" 
@@ -143,6 +164,9 @@
                        WidthRequest="90" />
                                     <StackLayout Grid.Row="1">
                                 <Label Grid.Column="1"
+                                   TextColor="{AppThemeBinding 
+                    Dark={StaticResource WindowBackgroundColorDark}, 
+                    Light={StaticResource WindowBackgroundColorDark}}"
                        Text="{Binding Name}"
                        FontAttributes="Bold"
                                        FontSize="Medium"
@@ -156,13 +180,14 @@
                                            VerticalOptions="Center"
                                            Aspect="AspectFill" HeightRequest="20" WidthRequest="20"/>
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
+                                <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween">
                                     <Label
                                         FontFamily="FAS"
                                         TextColor="Black"
                                            FontSize="Medium"
-                                          Text="{Binding Price,StringFormat='{0:0,0 $}'}"
+                                          Text="{Binding Price,StringFormat='{0:0$}'}"
                                            />
+                                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                                     <Image Source="FavouriteBlackIcon.png"
                                            VerticalOptions="Center"
                                            Aspect="AspectFill" HeightRequest="20" WidthRequest="20">
@@ -175,7 +200,8 @@
                                            Aspect="Fill" HeightRequest="20" WidthRequest="20">
 
                                     </Image>
-                                </StackLayout>
+                                            </StackLayout>
+                                </FlexLayout>
                             </StackLayout>
                             </Grid>
                         </DataTemplate>
@@ -195,7 +221,7 @@
                         Command="{Binding LoadMoreCommand}"
                         Style="{StaticResource ButtonOutline}"
                         CornerRadius="16"
-                        Text="Load More" />
+                        Text="Xem thêm" />
                 </FlexLayout>
             </CollectionView.Footer>
         </CollectionView>

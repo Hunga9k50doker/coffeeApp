@@ -9,20 +9,63 @@
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sửa"
+                     x:Name="editCoffee"
+                     Clicked="editCoffee_Clicked">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <Label Text="{Binding Name, StringFormat='Name: {0}'}"
-                   Style="{StaticResource LabelMedium}"/>
-            <Label Text="{Binding Price, StringFormat='Price: {0:0,0 $}'}"
-                   Style="{StaticResource LabelMedium}"/>
-            <Label Text="{Binding Detail, StringFormat='Detail: {0}'}"
-                   Style="{StaticResource LabelMedium}" />
-            <Image HorizontalOptions="Center" Source="{Binding Image}" />
+          
+            <Image
+                x:Name="Image"
+                HorizontalOptions="Center" Source="{Binding Image}" />
+
             <FlexLayout>
-            <Button Clicked="Button_Clicked" Text="Add To Cart"
+                
+            <Label
+                 FontFamily="FAS"
+                Text="Name: "
+                   Style="{StaticResource LabelMedium}"/>
+            <Label
+                x:Name="Name"
+                 FontFamily="FAS"
+                Text="{Binding Name, StringFormat='Name: {0}'}"
+                   Style="{StaticResource LabelMedium}"/>
+            </FlexLayout>
+            <FlexLayout >
+                <Label
+                 FontFamily="FAS"
+                Text="Price: "
+                   Style="{StaticResource LabelMedium}"/>
+
+                <Label  FontFamily="FAS"
+                x:Name="Price"
+                Text="{Binding Price, StringFormat='Price: 1{0:0 $}'}"
+                   Style="{StaticResource LabelMedium}"/>
+                <Label
+                 FontFamily="FAS"
+                Text="$"
+                   Style="{StaticResource LabelMedium}"/>
+            </FlexLayout>
+            <FlexLayout >
+                <Label
+                    WidthRequest="150"
+                 FontFamily="FAS"
+                Text="Detail: "
+                   Style="{StaticResource LabelMedium}"/>
+                <Label 
+                x:Name="Detail"
+                FontFamily="FAS" Text="{Binding Detail, StringFormat='Detail: {0}'}"
+                   Style="{StaticResource LabelMedium}" />
+            </FlexLayout>
+            <FlexLayout  JustifyContent="Center" Margin="0,40,0,0">
+                <Button  FontFamily="FAS" Clicked="Button_Clicked" Text="Add To Cart"
                     Style="{StaticResource ButtonOutline}"/>
-            <Button Clicked="Button_Clicked_1" Text="Delete"
-                    Style="{StaticResource ButtonOutline}"/>
+                <!--<Button  FontFamily="FAS" Clicked="Button_Clicked_1"
+                     Text="Delete" 
+                    Style="{StaticResource ButtonOutline}"/>-->
             </FlexLayout>
         </StackLayout>
     </ContentPage.Content>

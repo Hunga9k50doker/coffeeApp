@@ -1,9 +1,12 @@
 ﻿using MyCoffeeApp.Services;
+using MyCoffeeApp.Shared.Models;
 using MyCoffeeApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,37 +19,71 @@ namespace MyCoffeeApp.Views
     public partial class MyCoffeeDetailsPage : ContentPage
     {
         public string CoffeeId { get; set; }
-        ICoffeeService coffeeService;
-        public MyCoffeeDetailsPage()
+
+        public string imagePath { get; set; }
+        public Coffee coffee { get; set; }
+
+        CoffeeService coffeeService;
+        public MyCoffeeDetailsPage(string name, float price, string detail, string image)
         {
             InitializeComponent();
-            coffeeService = DependencyService.Get<ICoffeeService>();
+            //coffeeService = DependencyService.Get<CoffeeService>();
+            imagePath=image;
+            coffee = new Coffee
+            {
+
+            Name = name,
+            Image = image,
+            Price = price,
+            Detail = detail,
+        };
+
+            Name.Text =  name;
+            Price.Text = price.ToString();
+            Detail.Text = detail;
+            Image.Source = image;
         }
 
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            int.TryParse(CoffeeId, out var result);
-
-            BindingContext = await coffeeService.GetCoffee(result);
-        }
-
+       
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            //await Shell.Current.GoToAsync("..");
-            Console.WriteLine(e);
-            await DisplayAlert("Success!", "Add To Favorite Success!", "OK");
+            int.TryParse(Price.Text, out int res);
+            Cart cf = new Cart
+            {
+                Name = Name.Text,
+                Image = imagePath,
+                Price = res,
+                Detail = Detail.Text,
+                Count= 1
+            };
+            if (App.CoffeeDb.AddCoffeeToCart(cf))
+            {
+                await DisplayAlert("Thông báo!", $"Đã thêm sản phẩm vào giỏ hàng!", "Đóng");
+                await Shell.Current.GoToAsync("..");
+            }
         }
-        private async void Button_Clicked_1(object sender, EventArgs e)
-        {
-            //await Shell.Current.GoToAsync("..");
-        }
-        //protected override async void OnAppearing()
+        //private async void Button_Clicked_1(object sender, EventArgs e)
         //{
-        //    base.OnAppearing();
-        //    var vm = (MyCoffeeViewModel)BindingContext;
-        //    if (vm.Coffee.Count == 0)
-        //        await vm.RefreshCommand.ExecuteAsync();
+        //    var coffee = sender as Coffee;
+        //    bool isDelete = await DisplayAlert("Thông báo", "Bạn có muốn xóa không?", "Xóa", "Hủy bỏ");
+        //    if (isDelete)
+        //    {
+        //        //await coffeeService.RemoveCoffee(coffee);
+        //        //await Refresh();
+        //        //buttonDelete.Command = "{Binding Source={x:Reference MyCoffeePage}, Path=BindingContext.RemoveCommand}";
+        //        await Shell.Current.GoToAsync("..");
+        //    }
         //}
+
+        private void editCoffee_Clicked(object sender, EventArgs e)
+        {
+            int.TryParse(Price.Text, out int res);
+            Navigation.PushAsync(new EditMyCoffeePage(coffee));
+        }
+        protected override  void OnAppearing()
+        {
+            base.OnAppearing();
+           
+        }
     }
 }

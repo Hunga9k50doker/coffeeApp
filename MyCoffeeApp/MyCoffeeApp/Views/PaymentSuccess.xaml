@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCoffeeApp.Views.PaymentSuccess"
+             xmlns:local="clr-namespace:MyCoffeeApp" 
+             xmlns:control="clr-namespace:MyCoffeeApp.Controls" 
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             Background="#AA8666"
+             >
+    <ContentPage.Content>
+        <StackLayout Padding="40,20,40,20" VerticalOptions="Start" 
+                     HorizontalOptions="Center">
+            <Image
+                Source="payment.png"
+                WidthRequest="200"
+                ></Image>
+            <Label FontSize="24" FontAttributes="Bold" TextColor="Green" Text="Thanh toán thành công!" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+            <FlexLayout>
+                <Label FontSize="18" FontAttributes="Bold" TextColor="Black" Text="Tên khách hàng:" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                <Label FontSize="18" FontAttributes="Bold" TextColor="Black"   x:Name="nameuser"/>
+            </FlexLayout>
+            <FlexLayout>
+                <Label FontSize="18" FontAttributes="Bold" TextColor="Black" Text="Địa chỉ giao hàng:" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                <Label FontSize="18" FontAttributes="Bold" TextColor="Black"  x:Name="address"/>
+            </FlexLayout>
+
+            <FlexLayout>
+                <Label FontSize="18" FontAttributes="Bold" TextColor="Black" Text="Số điện thoại: " HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                <Label FontSize="18" FontAttributes="Bold" TextColor="Black"   x:Name="phonenumber"/>
+            </FlexLayout>
+            <FlexLayout >
+                <Label FontSize="18" FontAttributes="Bold" TextColor="Black" Text="Tổng tiền thanh toán: " HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                <Label FontSize="18" FontAttributes="Bold" TextColor="Black"  x:Name="totalPayment"/>
+            </FlexLayout>
+            
+            
+           
+           
+            <BoxView  WidthRequest="100" BackgroundColor="Black" HeightRequest="1"/>
+            <Button Text="Trang chủ" Clicked="Button_Clicked" Margin="0,20,0,0" BorderWidth="10" FontSize="16" FontAttributes="Bold" CornerRadius="16"
+                    BackgroundColor="LightYellow" TextColor="#000"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

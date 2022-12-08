@@ -5,7 +5,7 @@ namespace MyCoffeeApp.Shared.Models
     public class Coffee
     {
         [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        public int id { get; set; }
         public string Detail { get; set; }
         public float Price { get; set; }
         public string Name { get; set; }

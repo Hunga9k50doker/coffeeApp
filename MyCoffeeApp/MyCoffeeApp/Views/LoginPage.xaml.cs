@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyCoffeeApp.Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,10 @@ namespace MyCoffeeApp.Views
         public LoginPage()
         {
             InitializeComponent();
+            TapGestureRecognizer();
         }
 
-        protected override async void OnAppearing()
+        protected override  void OnAppearing()
         {
           //  base.OnAppearing();
            // var loggedin = true;
@@ -28,13 +30,36 @@ namespace MyCoffeeApp.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+            var us = new User
+            {
+                username = UsernameEntry.Text,
+                password = PasswordEntry.Text
+            };
+            if(!App.CoffeeDb.Login(us) || string.IsNullOrWhiteSpace(UsernameEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
+            {
+                await DisplayAlert("Thông báo", "Tên đăng nhập hoặc mật khẩu không chính xác.", "OK");
+
+            }
+            else if(App.CoffeeDb.Login(us))
+            {
+                await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+                await DisplayAlert("Thông báo", "Đăng nhập thành công.", "OK");
+            }
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        void TapGestureRecognizer()
         {
-            await Shell.Current.GoToAsync($"{nameof(RegistrationPage)}");
+            TapGestureRecognizer_Tapped.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command(() =>
+                {
+                    Shell.Current.GoToAsync($"{nameof(RegistrationPage)}");
+
+                })
+
+            });
 
         }
+      
     }
 }

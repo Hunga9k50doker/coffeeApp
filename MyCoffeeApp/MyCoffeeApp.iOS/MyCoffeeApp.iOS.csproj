@@ -241,5 +241,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\Pin.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\payment.png" />
+  </ItemGroup>
 </Project>

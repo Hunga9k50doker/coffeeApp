@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyCoffeeApp.Views.EditMyCoffeePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:MyCoffeeApp.ViewModels"
+    Title="Cập nhật sản phẩm"
+    x:DataType="viewmodel:EditMyCoffeeViewModel"
+    BackgroundColor="{AppThemeBinding 
+                    Dark={StaticResource WindowBackgroundColorDark}, 
+                    Light={StaticResource WindowBackgroundColor}}"
+    Shell.PresentationMode="Modal">
+    <ContentPage.BindingContext>
+        <viewmodel:EditMyCoffeeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label 
+               
+                Text="Name:"
+                   Style="{StaticResource LabelMedium}"/>
+            <Entry  x:Name="name" Text="{Binding Name}" />
+            <Label 
+                Text="Image:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry 
+                x:Name="image"
+                Text="{Binding Image}" />
+            <Label 
+                Text="Price:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry
+                x:Name="price"
+                Text="{Binding Price}" />
+            <Label
+                Text="Detail:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry
+                x:Name="detail"
+                Text="{Binding Detail}" />
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center" />
+
+            <Button
+                Padding="20,0"
+               Clicked="Button_Clicked"
+                HorizontalOptions="Center"
+                IsEnabled="{Binding IsNotBusy}"
+                Text="Cập nhật"
+                VerticalOptions="EndAndExpand"
+                Style="{StaticResource ButtonOutline}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

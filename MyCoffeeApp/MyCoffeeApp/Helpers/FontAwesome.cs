@@ -8591,7 +8591,7 @@ namespace FontAwesome
         /// See https://fontawesome.com/icons/grin-hearts
         /// </summary>
         public const string GrinHearts = "\uf584";
-
+        public const string Hearts = "\uf004";
         /// <summary>
         /// fa-grin-squint unicode value ("\uf585").
         /// <para/>

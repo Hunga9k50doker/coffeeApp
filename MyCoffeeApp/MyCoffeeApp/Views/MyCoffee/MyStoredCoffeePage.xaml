@@ -8,14 +8,15 @@
     xmlns:viewmodels="clr-namespace:MyCoffeeApp.ViewModels"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="MyCoffeePage"
-    Title="My Favorite"
-    x:DataType="viewmodels:MyCoffeeViewModel"
+    Title="Mục yêu thích"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
+
+    <!--x:DataType="viewmodels:MyCoffeeViewModel"
     <ContentPage.BindingContext>
         <viewmodels:MyCoffeeViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -23,33 +24,39 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding AddCommand}"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
 
 
+        <!--ItemsSource="{Binding Coffee}"-->
     <ListView
+        x:Name="cvcFavorite"
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-        ItemsSource="{Binding Coffee}"
         RefreshCommand="{Binding RefreshCommand}"
         SelectionMode="Single"
         Style="{StaticResource CoffeeListView}"
         CachingStrategy="RecycleElement">
-        <ListView.Behaviors>
+        
+        <!--<ListView.Behaviors>
             <xct:EventToCommandBehavior
                 EventName="ItemSelected"
                 Command="{Binding SelectedCommand}"                
                 EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
-        </ListView.Behaviors>
+        </ListView.Behaviors>-->
         <ListView.ItemTemplate>
-            <DataTemplate x:DataType="model:Coffee">
+            <DataTemplate>
                 <ViewCell>
                     <ViewCell.ContextActions>
                         <MenuItem
-                            Command="{Binding Source={x:Reference MyCoffeePage}, Path=BindingContext.RemoveCommand}"
                             CommandParameter="{Binding .}"
+                           Clicked="MenuItem_Clicked"
                             IsDestructive="True"
-                            Text="Delete" />
+                            Text="Xóa" />
+                        <MenuItem
+                            CommandParameter="{Binding .}"
+                           Clicked="MenuItem_Clicked_1"
+                            Text="Thêm vào giỏ hàng" />
                     </ViewCell.ContextActions>
                     <Grid Padding="10">
                         <Frame  Style="{StaticResource CoffeeCard}">
@@ -57,19 +64,19 @@
                                 <Image Source="{Binding Image}" WidthRequest="66" />
                                 <StackLayout VerticalOptions="Center">
                                     <Label
+                                        FontFamily="FAS"
                                         Style="{StaticResource LabelLarge}"
                                         Text="{Binding Name}"
                                         VerticalOptions="Center" />
-                                    <Label Text="{Binding Price}"
+                                    <Label Text="{Binding Price, StringFormat='{0:0}$'}"
+                                           TextColor="Brown"
+                                           FontFamily="FAS"
                                          Style="{StaticResource LabelMedium}"/>
                                     <Label
-
+                                        FontSize="16"
+                                        LineBreakMode="TailTruncation"
                                         Style="{StaticResource LabelLarge}"
                                         Text="{Binding Detail}"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding Id}"
                                         VerticalOptions="Center" />
                                 </StackLayout>
                             </StackLayout>
