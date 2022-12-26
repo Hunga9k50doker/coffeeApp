@@ -57,6 +57,7 @@ namespace MyCoffeeApp.Views
             var item = cvcCart.SelectedItem as Cart;
             item.Count++;
             var cart = new Cart {
+                id = item.id,
                 Name = item.Name,
                 Price = item.Price,
                 Detail = item.Detail,
@@ -79,6 +80,7 @@ namespace MyCoffeeApp.Views
                item.Count--;
                 var cart = new Cart
                 {
+                    id=item.id,
                     Name = item.Name,
                     Price = item.Price,
                     Detail = item.Detail,
@@ -105,9 +107,10 @@ namespace MyCoffeeApp.Views
                 cvcCart.ItemsSource = App.CoffeeDb.GetCartCoffee();
             }
         }
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Payment(total.Text));
+            //await Shell.Current.GoToAsync($"//{(new Payment(total.Text))}");
+            await Navigation.PushAsync(new Payment(total.Text));
         }
     }
 }

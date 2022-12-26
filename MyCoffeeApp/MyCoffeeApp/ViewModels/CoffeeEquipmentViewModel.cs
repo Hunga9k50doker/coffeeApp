@@ -92,7 +92,7 @@ namespace MyCoffeeApp.ViewModels
                 return;
             //var route = $"{nameof(MyCoffeeDetailsPage)}?CoffeeId={4}";
             //await Shell.Current.GoToAsync(route);
-            await Application.Current.MainPage.Navigation.PushAsync(new MyCoffeeDetailsPage(coffee.Name, coffee.Price, coffee.Detail, coffee.Image));
+            await Application.Current.MainPage.Navigation.PushAsync(new MyCoffeeDetailsPage(coffee.id, coffee.Name, coffee.Price, coffee.Detail, coffee.Image));
 
         }
         async Task Refresh()

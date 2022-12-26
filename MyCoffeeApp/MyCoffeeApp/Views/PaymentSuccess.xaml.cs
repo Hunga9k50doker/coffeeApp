@@ -23,15 +23,16 @@ namespace MyCoffeeApp.Views
 
         protected override  void OnAppearing()
         {
-          //  base.OnAppearing();
-           // var loggedin = true;
-           // if(loggedin)
-             //   await Shell.Current.GoToAsync($"//{nameof(CoffeeEquipmentPage)}");
+            //  base.OnAppearing();
+            // var loggedin = true;
+            // if(loggedin)
+            //await Shell.Current.GoToAsync($"//{nameof(OrderPage)}");
 
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            await Shell.Current.GoToAsync($"//{nameof(OrderPage)}");
             await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
     }

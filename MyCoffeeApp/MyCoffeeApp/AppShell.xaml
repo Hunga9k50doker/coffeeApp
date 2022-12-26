@@ -100,7 +100,7 @@
             <ShellContent Title="Espresso" ContentTemplate="{DataTemplate local:Espresso}" Route="CoffeeEquipmentPage2" />
                 <ShellContent Title="Other" ContentTemplate="{DataTemplate local:OtherCoffee}" Route="CoffeeEquipmentPage3" />
         </Tab>
-        <Tab Title="Đơn hàng">
+        <Tab Title="Giỏ hàng">
             <Tab.Icon>
                 <FontImageSource FontFamily="FAS"
                              Color="{AppThemeBinding 

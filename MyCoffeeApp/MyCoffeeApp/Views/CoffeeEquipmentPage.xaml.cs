@@ -39,7 +39,7 @@ namespace MyCoffeeApp.Views
         {
             //Coffee animalItem = (Coffee)e.;
             var cf = clsCoffee.SelectedItem as Coffee;
-            Navigation.PushAsync(new MyCoffeeDetailsPage(cf.Name, cf.Price, cf.Detail, cf.Image));
+            Navigation.PushAsync(new MyCoffeeDetailsPage(cf.id,cf.Name, cf.Price, cf.Detail, cf.Image));
 
         }
 

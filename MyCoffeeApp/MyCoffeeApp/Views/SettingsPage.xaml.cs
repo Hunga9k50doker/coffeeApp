@@ -68,5 +68,11 @@ namespace MyCoffeeApp.Views
         {
             await Shell.Current.GoToAsync($"{nameof(RegistrationPage)}");
         }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(MyOrder)}");
+
+        }
     }
 }

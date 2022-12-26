@@ -41,7 +41,7 @@ namespace MyCoffeeApp.Views
         private void clsCoffee_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Coffee coffee = (Coffee)e.SelectedItem;
-            Navigation.PushAsync(new MyCoffeeDetailsPage(coffee.Name, coffee.Price, coffee.Detail, coffee.Image));
+            Navigation.PushAsync(new MyCoffeeDetailsPage(coffee.id, coffee.Name, coffee.Price, coffee.Detail, coffee.Image));
 
         }
     }

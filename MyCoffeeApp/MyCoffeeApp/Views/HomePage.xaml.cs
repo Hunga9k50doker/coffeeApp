@@ -37,12 +37,12 @@ namespace MyCoffeeApp.Views
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var swItem =cvcCoffee_2.SelectedItem as Coffee;
-            await Navigation.PushAsync(new MyCoffeeDetailsPage(swItem.Name, swItem.Price, swItem.Detail, swItem.Image));
+            await Navigation.PushAsync(new MyCoffeeDetailsPage(swItem.id, swItem.Name, swItem.Price, swItem.Detail, swItem.Image));
         }
         private async void CollectionView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             var swItem = cvcCoffee_1.SelectedItem as Coffee;
-            await Navigation.PushAsync(new MyCoffeeDetailsPage(swItem.Name, swItem.Price, swItem.Detail, swItem.Image));
+            await Navigation.PushAsync(new MyCoffeeDetailsPage(swItem.id, swItem.Name, swItem.Price, swItem.Detail, swItem.Image));
         }
         //protected override async void OnAppearing()
         //{

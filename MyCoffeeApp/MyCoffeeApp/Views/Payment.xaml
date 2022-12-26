@@ -22,6 +22,7 @@
                         CornerRadius="16"
                       >
                 <control:BorderlessEntry
+                    Text="Nguyen Van Hung"
                             x:Name="nameuser"
                             Placeholder="Tên khách hàng"
                             TextColor="{DynamicResource Gray-56}" />
@@ -35,6 +36,7 @@
                         CornerRadius="16"
                       >
                 <control:BorderlessEntry
+                    Text="DHCNTT"
                             x:Name="address"
                             Placeholder="Địa chỉ"
                             TextColor="{DynamicResource Gray-56}" />
@@ -48,6 +50,7 @@
                         CornerRadius="16"
                       >
                 <control:BorderlessEntry
+                    Text="0983322132"
                             x:Name="phonenumber"
                             Placeholder="Số điện thoại"
                             TextColor="{DynamicResource Gray-56}" />

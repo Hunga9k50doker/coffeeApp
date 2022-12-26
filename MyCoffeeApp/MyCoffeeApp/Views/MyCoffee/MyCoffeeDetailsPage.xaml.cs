@@ -24,14 +24,14 @@ namespace MyCoffeeApp.Views
         public Coffee coffee { get; set; }
 
         CoffeeService coffeeService;
-        public MyCoffeeDetailsPage(string name, float price, string detail, string image)
+        public MyCoffeeDetailsPage(int id, string name, float price, string detail, string image)
         {
             InitializeComponent();
             //coffeeService = DependencyService.Get<CoffeeService>();
             imagePath=image;
             coffee = new Coffee
             {
-
+                id = id,
             Name = name,
             Image = image,
             Price = price,

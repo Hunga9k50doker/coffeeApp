@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCoffeeApp.Shared", "MyCof
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B723FEF-108B-425A-9D62-D74850B61471}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{80E51014-5A32-4E92-9FD8-3A3138217453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,18 @@ Global
 		{AFDFC5AB-C2C2-4F45-8F51-711E3EE9E0A6}.Release|iPhone.Build.0 = Release|Any CPU
 		{AFDFC5AB-C2C2-4F45-8F51-711E3EE9E0A6}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{AFDFC5AB-C2C2-4F45-8F51-711E3EE9E0A6}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Release|iPhone.Build.0 = Release|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{80E51014-5A32-4E92-9FD8-3A3138217453}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
