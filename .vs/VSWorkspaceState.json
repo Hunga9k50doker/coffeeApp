@@ -3,14 +3,8 @@
     "",
     "\\MyCoffeeApp",
     "\\MyCoffeeApp\\MyCoffeeApp",
-    "\\MyCoffeeApp\\MyCoffeeApp\\ViewModels",
-    "\\MyCoffeeApp\\MyCoffeeApp\\ViewModels\\MyCoffee",
-    "\\MyCoffeeApp\\MyCoffeeApp\\Views",
-    "\\MyCoffeeApp\\MyCoffeeApp\\Views\\MyCoffee",
-    "\\WebAPI",
-    "\\WebAPI\\Controllers",
-    "\\WebAPI\\Database",
-    "\\WebAPI\\Models"
+    "\\WebAPI"
   ],
+  "SelectedNode": "\\WebAPI",
   "PreviewInSolutionExplorer": false
 }
