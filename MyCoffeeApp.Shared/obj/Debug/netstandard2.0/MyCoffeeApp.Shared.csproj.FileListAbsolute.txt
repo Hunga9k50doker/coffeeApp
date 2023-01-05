@@ -1,0 +1,10 @@
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\bin\Debug\netstandard2.0\MyCoffeeApp.Shared.deps.json
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\bin\Debug\netstandard2.0\MyCoffeeApp.Shared.dll
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\bin\Debug\netstandard2.0\MyCoffeeApp.Shared.pdb
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\obj\Debug\netstandard2.0\MyCoffeeApp.Shared.csproj.AssemblyReference.cache
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\obj\Debug\netstandard2.0\MyCoffeeApp.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\obj\Debug\netstandard2.0\MyCoffeeApp.Shared.AssemblyInfoInputs.cache
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\obj\Debug\netstandard2.0\MyCoffeeApp.Shared.AssemblyInfo.cs
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\obj\Debug\netstandard2.0\MyCoffeeApp.Shared.csproj.CoreCompileInputs.cache
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\obj\Debug\netstandard2.0\MyCoffeeApp.Shared.dll
+D:\Users\USER\source\MyCoffeeApp\MyCoffeeApp.Shared\obj\Debug\netstandard2.0\MyCoffeeApp.Shared.pdb
