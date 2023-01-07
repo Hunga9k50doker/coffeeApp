@@ -7288,23 +7288,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
+    "C:\\Users\\hunga\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DiDong\\Backend_Thue\\Backend_Thue\\Backend_Thue.csproj",
-      "projectName": "Backend_Thue",
-      "projectPath": "D:\\DiDong\\Backend_Thue\\Backend_Thue\\Backend_Thue.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\DiDong\\Backend_Thue\\Backend_Thue\\obj\\",
+      "projectUniqueName": "D:\\Users\\USER\\source\\MyCoffeeApp\\Backend_Thue\\Backend.csproj",
+      "projectName": "Backend",
+      "projectPath": "D:\\Users\\USER\\source\\MyCoffeeApp\\Backend_Thue\\Backend.csproj",
+      "packagesPath": "C:\\Users\\hunga\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\USER\\source\\MyCoffeeApp\\Backend_Thue\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hunga\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7374,7 +7374,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
