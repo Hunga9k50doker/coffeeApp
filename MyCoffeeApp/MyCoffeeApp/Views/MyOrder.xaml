@@ -81,7 +81,7 @@
                             </SwipeItems>
                         </SwipeView.RightItems>
                             <FlexLayout Margin="20" JustifyContent="SpaceBetween">
-                                <Image Source="{Binding Image}" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
+                                <Image Source="{Binding coffee.image}" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
                   />
                                 <StackLayout  Orientation="Vertical" 
                         >
@@ -94,63 +94,33 @@
                         TextColor="Brown"
                         FontFamily="FAS"
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Price,StringFormat='{0:0}$'}"
+                        Text="{Binding coffee.price,StringFormat='{0:0}$'}"
                         VerticalOptions="Center" 
                    />
                                 </StackLayout>
-                                <FlexLayout AlignContent="Center" JustifyContent="Center" WidthRequest="140">
-                                    <Button Text="-" x:Name="down"  Clicked="Down_Clicked" WidthRequest="50" HeightRequest="50" Padding="0" CornerRadius="50"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-                                    <Label x:Name="LabelCountDisplay" x:Uid="textCount" Text="{Binding Count}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="18"  WidthRequest="40" HeightRequest="40"  FontFamily="FAS"></Label>
-                                    <Button Text="+" x:Name="up" Clicked="Up_Clicked" WidthRequest="50" HeightRequest="50" CornerRadius="50" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
-                                </FlexLayout>
+                                 <!--<FlexLayout JustifyContent="Center" AlignContent="Center">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,20,0,0" >
+                        <Label TextColor="Black"  Margin="20,0,0,0" Text="Tổng tiền:" FontSize="22" />
+                        <Label x:Name="total" Text="20" TextColor="#AA8666" FontSize="26" FontFamily="FAS"/>
+                        <Label Text="$" TextColor="#AA8666" Margin="0,0,20,0" FontSize="26" FontFamily="FAS" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <Button Clicked="Button_Clicked" Text="Thanh toán" Background="#AA8666" TextColor="White" HeightRequest="40" Margin="0,10,0,20" />
+            </FlexLayout>-->
                             </FlexLayout>
                         </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-          
+            <AbsoluteLayout Background="LightYellow" HeightRequest="60">
+                <FlexLayout JustifyContent="Center" AlignContent="Center">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,20,0,0" >
+                        <Label TextColor="Black"  Margin="20,0,0,0" Text="Tổng tiền:" FontSize="22" />
+                        <Label x:Name="total" Text="20" TextColor="#AA8666" FontSize="26" FontFamily="FAS"/>
+                        <Label Text="$" TextColor="#AA8666" Margin="0,0,20,0" FontSize="26" FontFamily="FAS" VerticalTextAlignment="Start" />
+                    </StackLayout>
+                    <Button Clicked="Button_Clicked" Text="Thanh toán" Background="#AA8666" TextColor="White" HeightRequest="40" Margin="0,10,0,20" />
+                </FlexLayout>
+            </AbsoluteLayout>
         </StackLayout>
     </RefreshView>
-    
-    
-    <!--<StackLayout >
-
-        <ListView
-        CachingStrategy="RecycleElement"
-        GroupDisplayBinding="{Binding Key}"
-        IsGroupingEnabled="True"
-        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-        ItemsSource="{Binding CoffeeGroups}"
-        RefreshCommand="{Binding RefreshCommand}"
-        SelectedItem="{Binding SelectedCoffee, Mode=TwoWay}"
-        Style="{StaticResource CoffeeListView}"
-        ItemTemplate="{StaticResource CoffeeSelector}">
-        <ListView.Behaviors>
-            <xct:EventToCommandBehavior
-                Command="{Binding SelectedCommand}"
-                EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"
-                EventName="ItemSelected" />
-        </ListView.Behaviors>
-        <ListView.GroupHeaderTemplate>
-            <DataTemplate x:DataType="{x:Null}">
-                <ViewCell>
-                    <StackLayout Padding="20,0">
-                        <Label Style="{StaticResource LabelMedium}" Text="{Binding Key}" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.GroupHeaderTemplate>
-    </ListView>
-        <AbsoluteLayout>
-            <FlexLayout JustifyContent="Center" AlignContent="Center">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label  Margin="20,0,0,0" Text="Tổng tiền:" FontSize="22" />
-                    <Label Text="123$" TextColor="Brown" Margin="0,0,20,0" FontSize="26" FontFamily="FAS"/>
-                </StackLayout>
-                <Button Text="Thanh toán" Background="Blue" TextColor="White" HeightRequest="50" Margin="0,0,0,20"/>
-            </FlexLayout>
-        </AbsoluteLayout>
-    </StackLayout>-->
-
-    
 </ContentPage>

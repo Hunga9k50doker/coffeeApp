@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="MyCoffeeApp.Views.MyStoredCoffeePage"
+    x:Class="MyCoffeeApp.Views.MyOderDetailsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:MyCoffeeApp.Shared.Models;assembly=MyCoffeeApp.Shared"
     xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
     xmlns:viewmodels="clr-namespace:MyCoffeeApp.ViewModels"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Name="MyCoffeePage"
-    Title="Mục yêu thích"
+    x:Name="MyOrderPage"
+    Title="Đơn đặt hàng"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
@@ -20,16 +20,17 @@
     </ContentPage.Resources>
 
     <ListView
-        x:Name="cvcFavorite"
+        x:Name="cvcOrderDetail"
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         RefreshCommand="{Binding RefreshCommand}"
         SelectionMode="Single"
         Style="{StaticResource CoffeeListView}"
+        ItemSelected="cvcOrderDetail_ItemSelected"
         CachingStrategy="RecycleElement">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <ViewCell.ContextActions>
+                    <!--<ViewCell.ContextActions>
                         <MenuItem
                             CommandParameter="{Binding .}"
                            Clicked="MenuItem_Clicked"
@@ -39,28 +40,43 @@
                             CommandParameter="{Binding .}"
                            Clicked="MenuItem_Clicked_1"
                             Text="Thêm vào giỏ hàng" />
-                    </ViewCell.ContextActions>
+                    </ViewCell.ContextActions>-->
                     <Grid Padding="10">
                         <Frame  Style="{StaticResource CoffeeCard}">
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding coffee.image}" WidthRequest="66" />
                                 <StackLayout VerticalOptions="Center">
+                                    <FlexLayout>
                                     <Label
                                         FontFamily="FAS"
-                                        Style="{StaticResource LabelLarge}"
-                                        Text="{Binding coffee.name}"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Người nhận: "
                                         VerticalOptions="Center" />
-                                    <Label Text="{Binding coffee.price, StringFormat='{0:0}$'}"
-                                           TextColor="Brown"
+                                        <Label
+                                        FontFamily="FAS"
+                                        Style="{StaticResource LabelLarge}"
+                                        Text="{Binding name}"
+                                        VerticalOptions="Center" />
+                                    </FlexLayout>
+                                    <FlexLayout>
+                                    <Label Text="Trạng thái: "
                                            FontFamily="FAS"
                                          Style="{StaticResource LabelMedium}"/>
                                     <Label
                                         FontSize="16"
                                         LineBreakMode="TailTruncation"
                                         Style="{StaticResource LabelLarge}"
-                                        Text="{Binding coffee.detail}"
+                                        Text="Đang giao"
+                                        VerticalOptions="Center" />
+                                    </FlexLayout>
+                                    <Label
+                                        FontSize="16"
+                                        LineBreakMode="TailTruncation"
+                                        Style="{StaticResource LabelLarge}"
+                                        Text="{Binding orderDate,StringFormat='{0:dd/MM/yyyy}'}"
+                                        x:Name="totalOrder"
                                         VerticalOptions="Center" />
                                 </StackLayout>
+                               
                             </StackLayout>
                         </Frame>
                     </Grid>

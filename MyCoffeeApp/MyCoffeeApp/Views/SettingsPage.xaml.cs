@@ -71,7 +71,8 @@ namespace MyCoffeeApp.Views
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"{nameof(MyOrder)}");
+            //await Shell.Current.GoToAsync($"{nameof(MyOderDetailsPage)}");
+            await Navigation.PushAsync(new MyOderDetailsPage());
 
         }
     }

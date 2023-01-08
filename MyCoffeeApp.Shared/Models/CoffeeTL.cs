@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Web;
-using System.Web.UI.WebControls;
+﻿using SQLite;
 
-namespace WebAPI.Models
+namespace MyCoffeeApp.Shared.Models
 {
-    public class Coffee
+    public class CoffeeTL
     {
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public string detail { get; set; }
         public float price { get; set; }

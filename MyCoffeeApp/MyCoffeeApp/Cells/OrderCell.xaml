@@ -6,20 +6,20 @@
              x:Class="MyCoffeeApp.Cells.OrderCell">
   <ContentView.Content>
         <FlexLayout Margin="20" JustifyContent="SpaceBetween">
-            <Image Source="{Binding Image}" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
+            <Image Source="{Binding image}" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
                   />
             <StackLayout  Orientation="Vertical" 
                         >
                 <Label
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Name}"
+                        Text="{Binding name}"
                         VerticalOptions="Center"
                     VerticalTextAlignment="Center"/>
                 <Label  
                         TextColor="Brown"
                         FontFamily="FAS"
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Price,StringFormat='{0:0}$'}"
+                        Text="{Binding price,StringFormat='{0:0}$'}"
                         VerticalOptions="Center" 
                    />
             </StackLayout>

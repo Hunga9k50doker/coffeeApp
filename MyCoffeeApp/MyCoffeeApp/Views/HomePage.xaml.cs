@@ -1,9 +1,11 @@
 ﻿using MyCoffeeApp.Services;
 using MyCoffeeApp.Shared.Models;
 using MyCoffeeApp.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,13 +18,20 @@ namespace MyCoffeeApp.Views
     public partial class HomePage : ContentPage
     {
         private readonly CoffeeService _cfDatabase = new CoffeeService();
+        public List<Coffee> listInit;
         public HomePage()
         {
             InitializeComponent();
-            //List<Coffee> list = _cfDatabase.GetCoffee();
-            //cvcCoffee_1.ItemsSource = list;
+            GetAllCf();
         }
 
+        async void GetAllCf()
+        {
+            HttpClient httpClient = new HttpClient();
+            var result = await httpClient.GetStringAsync("http://coffeeapi.somee.com/api/Coffee");
+            listInit = JsonConvert.DeserializeObject<List<Coffee>>(result);
+            //cvcCoffee_1.ItemsSource = listInit;
+        }
         private void searchItem_Clicked(object sender, EventArgs e)
         {
 
@@ -37,19 +46,17 @@ namespace MyCoffeeApp.Views
         private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var swItem =cvcCoffee_2.SelectedItem as Coffee;
-            await Navigation.PushAsync(new MyCoffeeDetailsPage(swItem.id, swItem.Name, swItem.Price, swItem.Detail, swItem.Image));
+            await Navigation.PushAsync(new MyCoffeeDetailsPage(swItem));
         }
         private async void CollectionView_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             var swItem = cvcCoffee_1.SelectedItem as Coffee;
-            await Navigation.PushAsync(new MyCoffeeDetailsPage(swItem.id, swItem.Name, swItem.Price, swItem.Detail, swItem.Image));
+            await Navigation.PushAsync(new MyCoffeeDetailsPage(swItem));
         }
-        //protected override async void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    var vm = (MyCoffeeViewModel)BindingContext;
-        //    if (vm.Coffee.Count == 0)
-        //        await vm.RefreshCommand.ExecuteAsync();
-        //}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            GetAllCf();
+        }
     }
 }

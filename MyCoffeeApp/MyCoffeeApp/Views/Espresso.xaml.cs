@@ -15,15 +15,15 @@ namespace MyCoffeeApp.Views
     public partial class Espresso : ContentPage
     {
         private readonly CoffeeService _cfDatabase = new CoffeeService();
-        public List<Coffee> list;
+        public List<CoffeeTL> list;
         public Espresso()
         {
             InitializeComponent();
-            list = new List<Coffee>
+            list = new List<CoffeeTL>
             {
-               new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso", Price = 12, Image = "espresso.jpg" },
-               new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso Con Panna", Price = 11, Image = "espresso_con_panna.jpg" },
-                new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso Macchiato", Price = 6, Image = "espresso_macchiato.jpg" }
+               new CoffeeTL { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso", price = 12, image = "espresso.jpg" },
+               new CoffeeTL { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso Con Panna", price = 11, image = "espresso_con_panna.jpg" },
+                new CoffeeTL { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso Macchiato", price = 6, image = "espresso_macchiato.jpg" }
             };
             clsCoffee.ItemsSource = list;
         }
@@ -31,17 +31,17 @@ namespace MyCoffeeApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            list.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso", Price = 12, Image = "espresso.jpg" });
-            list.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso Con Panna", Price = 11, Image = "espresso_con_panna.jpg" });
-            list.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso Macchiato", Price = 6, Image = "espresso_macchiato.jpg" });
+            list.Add(new CoffeeTL { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso", price = 12, image = "espresso.jpg" });
+            list.Add(new CoffeeTL { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso Con Panna", price = 11, image = "espresso_con_panna.jpg" });
+            list.Add(new CoffeeTL { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso Macchiato", price = 6, image = "espresso_macchiato.jpg" });
             clsCoffee.ItemsSource = list;
 
         }
 
         private void clsCoffee_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Coffee coffee = (Coffee)e.SelectedItem;
-            Navigation.PushAsync(new MyCoffeeDetailsPage(coffee.id, coffee.Name, coffee.Price, coffee.Detail, coffee.Image));
+            CoffeeTL coffee = (CoffeeTL)e.SelectedItem;
+            //Navigation.PushAsync(new MyCoffeeDetailsPage(coffee.id, coffee.name, coffee.price, coffee.detail, coffee.image));
 
         }
     }

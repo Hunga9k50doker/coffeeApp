@@ -125,7 +125,6 @@ namespace WebAPI.Database
             param.Add("price", cf.price);
             param.Add("detail", cf.detail);
             param.Add("image", cf.image);
-            param.Add("type", cf.type);
 
             int kq = int.Parse(Exec_Command("Add_Coffee", param).ToString());
             return kq;
@@ -194,9 +193,7 @@ namespace WebAPI.Database
             {
                 DataRow r = tb.NewRow();
                 r["id_cofee"] = h.id;
-                r["count"] = h.count;
                 r["price"] = h.price;
-                r["totalPrice"] = h.count * h.price;
                 tb.Rows.Add(r);
             }
             tb.AcceptChanges();

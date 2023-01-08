@@ -20,10 +20,10 @@ namespace MyCoffeeApp.Services
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             db = new SQLiteConnection(System.IO.Path.Combine(folder, "MyData1.db3"));
 
-             db.CreateTable<Coffee>();
-            db.CreateTable<User>();
-            db.CreateTable<Cart>();
-            db.CreateTable<Favorite>();
+            //db.CreateTable<Coffee>();
+            //db.CreateTable<User>();
+            //db.CreateTable<Cart>();
+            //db.CreateTable<Favorite>();
 
         }
 
@@ -116,7 +116,7 @@ namespace MyCoffeeApp.Services
         {
             try
             {
-                Console.WriteLine(cf.id + cf.Name);
+                Console.WriteLine(cf.id + cf.name);
                  db.Update(cf);
                 return true;
             }
@@ -215,20 +215,21 @@ namespace MyCoffeeApp.Services
             }
         }
 
-        public List<Coffee> GetCoffeeById(int id)
-        {
-            try
-            {
-                return db.Table<Coffee>().Where(o => o.id == id).ToList();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-                return null;
-                throw;
+        //public List<Coffee> GetCoffeeById(int id)
+        //{
+        //    try
+        //    {
+        //        return db.Table<Coffee>().Where(o => o.id == id).ToList();
 
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(ex);
+        //        return null;
+        //        throw;
+
+        //    }
+        //}
 
     }
 }

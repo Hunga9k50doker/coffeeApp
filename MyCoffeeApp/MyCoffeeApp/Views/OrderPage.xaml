@@ -81,26 +81,26 @@
                             </SwipeItems>
                         </SwipeView.RightItems>
                             <FlexLayout Margin="20" JustifyContent="SpaceBetween">
-                                <Image Source="{Binding Image}" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
+                                <Image Source="{Binding coffee.image}" WidthRequest="60" HeightRequest="60" Aspect="AspectFit"
                   />
                                 <StackLayout  Orientation="Vertical" 
                         >
                                     <Label
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Name}"
+                        Text="{Binding coffee.name}"
                         VerticalOptions="Center"
                     VerticalTextAlignment="Center"/>
                                     <Label  
                         TextColor="Brown"
                         FontFamily="FAS"
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Price,StringFormat='{0:0}$'}"
+                        Text="{Binding coffee.price,StringFormat='{0:0}$'}"
                         VerticalOptions="Center" 
                    />
                                 </StackLayout>
                                 <FlexLayout AlignContent="Center" JustifyContent="Center" WidthRequest="140">
                                     <Button Text="-" x:Name="down"  Clicked="Down_Clicked" WidthRequest="50" HeightRequest="50" Padding="0" CornerRadius="50"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-                                    <Label x:Name="LabelCountDisplay" x:Uid="textCount" Text="{Binding Count}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="18"  WidthRequest="40" HeightRequest="40"  FontFamily="FAS"></Label>
+                                    <Label x:Name="LabelCountDisplay" x:Uid="textCount" Text="{Binding quantity}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="18"  WidthRequest="40" HeightRequest="40"  FontFamily="FAS"></Label>
                                     <Button Text="+" x:Name="up" Clicked="Up_Clicked" WidthRequest="50" HeightRequest="50" CornerRadius="50" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                 </FlexLayout>
                             </FlexLayout>

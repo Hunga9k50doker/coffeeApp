@@ -48,8 +48,8 @@ namespace MyCoffeeApp.ViewModels
             if (coffee == null)
                 return;
             coffeeService = DependencyService.Get<CoffeeService>();
-            //await coffeeService.AddCoffee(coffee.Name, coffee.Image, coffee.Detail, coffee.Price);
-            await Application.Current.MainPage.DisplayAlert("Thông báo", "Đã thêm "+ coffee.Name + " vào mục yêu thích", "Đóng");
+            //await coffeeService.AddCoffee(coffee.name, coffee.image, coffee.detail, coffee.price);
+            await Application.Current.MainPage.DisplayAlert("Thông báo", "Đã thêm "+ coffee.name + " vào mục yêu thích", "Đóng");
 
         }
 
@@ -71,7 +71,7 @@ namespace MyCoffeeApp.ViewModels
 
 
             await AppShell.Current.GoToAsync(nameof(AddMyCoffeePage));
-            //await Application.Current.MainPage.DisplayAlert("Selected", coffee.Name, "OK");
+            //await Application.Current.MainPage.DisplayAlert("Selected", coffee.name, "OK");
 
         }
 
@@ -91,16 +91,16 @@ namespace MyCoffeeApp.ViewModels
         {
             if (Coffee.Count >= 20)
                 return;
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Dolce Latte", Price = 15, Image = "asian_dolce_latte.jpg" });
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Vanila Latte", Price = 12, Image = "asset_vanilla_latte.jpg" });
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Americano", Price = 11, Image = "caffe_americano.jpg" });
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Latte", Price = 6, Image = "caffee_latte.jpg" });
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Mocha", Price = 5, Image = "caffee_mocha.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Dolce Latte", price = 15, image = "asian_dolce_latte.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Vanila Latte", price = 12, image = "asset_vanilla_latte.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Americano", price = 11, image = "caffe_americano.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Latte", price = 6, image = "caffee_latte.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Mocha", price = 5, image = "caffee_mocha.jpg" });
 
             CoffeeGroups.Clear();
 
             CoffeeGroups.Add(new Grouping<string, Coffee>("", Coffee.Where(c => true)));
-            //CoffeeGroups.Add(new Grouping<string, Coffee>("", Coffee.Where(c => c.Detail == "")));
+            //CoffeeGroups.Add(new Grouping<string, Coffee>("", Coffee.Where(c => c.detail == "")));
         }
 
         void DelayLoadMore()

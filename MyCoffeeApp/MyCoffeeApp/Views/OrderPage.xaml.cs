@@ -1,10 +1,12 @@
 ﻿using MyCoffeeApp.Services;
 using MyCoffeeApp.Shared.Models;
 using MyCoffeeApp.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,21 +18,34 @@ namespace MyCoffeeApp.Views
     public partial class OrderPage : ContentPage
     {
         private readonly CoffeeService _cfDatabase = new CoffeeService();
+        public List<cartDetails> listInit;
 
 
         public OrderPage()
         {
             
             InitializeComponent();
-            List<Cart> list = _cfDatabase.GetCartCoffee();
-            cvcCart.ItemsSource = list;
-            total.Text = list.Sum(x => Convert.ToInt32(x.Count)* Convert.ToInt32(x.Price)).ToString();
+            GetAllCf();
+        }
+        async void GetAllCf()
+        {
+            HttpClient httpClient = new HttpClient();
+
+            var result = await httpClient.GetStringAsync("http://coffeeapi.somee.com/api/Cart/" + ((App)App.Current).userId);
+            var kqtv = JsonConvert.DeserializeObject<Cart>(result);
+            listInit = kqtv.cartDetails;
+            var sum = 0;
+            foreach (var item in listInit)
+            {
+                sum += int.Parse(item.coffee.price.ToString()) * item.quantity;
+            }
+            total.Text = sum.ToString();
+            cvcCart.ItemsSource = listInit;
         }
         protected override  void OnAppearing()
         {
             base.OnAppearing();
-            List<Cart> list = _cfDatabase.GetCartCoffee();
-            cvcCart.ItemsSource = list;
+            GetAllCf();
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
@@ -39,72 +54,71 @@ namespace MyCoffeeApp.Views
         private async void favorite_Invoked(object sender, EventArgs e)
         {
             var swItem = sender as SwipeItem;
-            var ct = swItem.CommandParameter as Cart;
-            var cf = new Favorite
+            var ct = swItem.CommandParameter as cartDetails;
+            var cf = new
             {
-                Name = ct.Name,
-                Detail =ct.Detail,
-                Image =ct.Image ,
-                Price =ct.Price,
+                coffeeId = ct.coffee.id,
+                favouriteId = ((App)App.Current).favId,
             };
-            if (App.CoffeeDb.AddCoffeeToFav(cf))
-            {
-                await DisplayAlert("Thông báo", $"Đã thêm {cf.Name} vào mục yêu thích.", "Đóng");
-            }
-        }
-        private  void Up_Clicked(object sender, EventArgs e)
+            HttpClient http = new HttpClient();
+            string jsonlh = JsonConvert.SerializeObject(cf);
+            StringContent httcontent = new StringContent(jsonlh, Encoding.UTF8, "application/json");
+            await http.PostAsync
+              ("http://coffeeapi.somee.com/api/Favorite", httcontent);
+            await DisplayAlert("Thông báo", $"Đã thêm vào mục yêu thích.", "Đóng");
+        
+    }
+        private async  void  Up_Clicked(object sender, EventArgs e)
         {
-            var item = cvcCart.SelectedItem as Cart;
-            item.Count++;
-            var cart = new Cart {
-                id = item.id,
-                Name = item.Name,
-                Price = item.Price,
-                Detail = item.Detail,
-                Image = item.Image,
-                Count = item.Count
+            var item = cvcCart.SelectedItem as cartDetails;
+
+            var cf = new 
+            {
+                quantity = 1,
+                coffeeId = item.coffee.id,
+                cartId = ((App)App.Current).cartId,
             };
-            Console.WriteLine(item.Count);
-            App.CoffeeDb.EditCart(cart);
-            List<Cart> list = _cfDatabase.GetCartCoffee();
-            cvcCart.ItemsSource = list;
-            //total.Text = list.Sum(x => Convert.ToInt32(x.Count) * Convert.ToInt32(x.Price)).ToString();
-            total.Text =( Convert.ToInt32(total.Text) + Convert.ToInt32(item.Price)).ToString();
+            HttpClient http = new HttpClient();
+            string jsonlh = JsonConvert.SerializeObject(cf);
+            StringContent httcontent = new StringContent(jsonlh, Encoding.UTF8, "application/json");
+           var result= await http.PostAsync("http://coffeeapi.somee.com/api/Cart", httcontent);
+            GetAllCf();
         }
 
-        private void Down_Clicked(object sender, EventArgs e)
+        private async void Down_Clicked(object sender, EventArgs e)
         {
-            var item = cvcCart.SelectedItem as Cart;
-            if (item.Count > 1)
+            var item = cvcCart.SelectedItem as cartDetails;
+            Console.WriteLine(item.coffee.id, item.quantity);
+            if (item.quantity > 1)
             {
-               item.Count--;
-                var cart = new Cart
+                var cf = new 
                 {
-                    id=item.id,
-                    Name = item.Name,
-                    Price = item.Price,
-                    Detail = item.Detail,
-                    Image = item.Image,
-                    Count = item.Count
+                    quantity = -1,
+                    coffeeId = item.coffee.id,
+                    cartId = ((App)App.Current).cartId,
                 };
-                App.CoffeeDb.EditCart(cart);
-                List<Cart> list = _cfDatabase.GetCartCoffee();
-                cvcCart.ItemsSource = list;
-                total.Text = (Convert.ToInt32(total.Text) - Convert.ToInt32(item.Price)).ToString();
-
+                HttpClient http = new HttpClient();
+                string jsonlh = JsonConvert.SerializeObject(cf);
+                StringContent httcontent = new StringContent(jsonlh, Encoding.UTF8, "application/json");
+                await http.PostAsync("http://coffeeapi.somee.com/api/Cart", httcontent);
             }
+            GetAllCf();
 
         }
 
         private async void delete_Invoked_1(object sender, EventArgs e)
         {
             var swItem = sender as SwipeItem;
-            var ct = swItem.CommandParameter as Cart;
-            bool answer = await DisplayAlert("Thông báo", $"Bạn có muốn xóa {ct.Name} không?", "Có", "Hủy bỏ");
+            var ct = swItem.CommandParameter as cartDetails;
+            var mi = ((MenuItem)sender);
+            cartDetails cf = (cartDetails)mi.CommandParameter;
+            bool answer = await DisplayAlert("Thông báo", $"Bạn có muốn xóa không?", "Có", "Hủy bỏ");
             if (answer)
             {
-                App.CoffeeDb.RemoveCart(ct);
-                cvcCart.ItemsSource = App.CoffeeDb.GetCartCoffee();
+                HttpClient httpClient = new HttpClient();
+                await httpClient.DeleteAsync("http://coffeeapi.somee.com/api/Cart/" + cf.id);
+                await DisplayAlert("Thông báo", $"Đã xóa khỏi giỏ hàng", "Đóng");
+                GetAllCf();
             }
         }
         private async void Button_Clicked(object sender, EventArgs e)

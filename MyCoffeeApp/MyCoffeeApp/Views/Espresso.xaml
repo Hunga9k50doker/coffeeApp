@@ -13,7 +13,6 @@
     BackgroundColor="{AppThemeBinding 
                         Dark={StaticResource WindowBackgroundColorDark}, 
                         Light={StaticResource WindowBackgroundColor}}">
-    <!--x:DataType="viewmodels:ExpressoEquipmentViewModel"-->
     <!--<ContentPage.BindingContext>
         <viewmodels:ExpressoEquipmentViewModel />
     </ContentPage.BindingContext>-->

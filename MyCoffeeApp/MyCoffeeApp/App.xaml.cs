@@ -14,6 +14,9 @@ namespace MyCoffeeApp
     public partial class App : Application
     {
         public static CoffeeService CoffeeDb = new CoffeeService();
+        public string favId { get; set; }
+        public string cartId { get; set; }
+        public string userId { get; set; }
         public static string ImageServerPath { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
 
         public App()

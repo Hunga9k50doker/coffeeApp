@@ -4,7 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:MyCoffeeApp.Shared.Models;assembly=MyCoffeeApp.Shared"
-    Title="{Binding Name}"
+    Title="{Binding name}"
     x:DataType="model:Coffee"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
@@ -20,7 +20,7 @@
           
             <Image
                 x:Name="Image"
-                HorizontalOptions="Center" Source="{Binding Image}" />
+                HorizontalOptions="Center" Source="{Binding image}" />
 
             <FlexLayout>
                 
@@ -31,7 +31,7 @@
             <Label
                 x:Name="Name"
                  FontFamily="FAS"
-                Text="{Binding Name, StringFormat='Name: {0}'}"
+                Text="{Binding name, StringFormat='Name: {0}'}"
                    Style="{StaticResource LabelMedium}"/>
             </FlexLayout>
             <FlexLayout >
@@ -42,7 +42,7 @@
 
                 <Label  FontFamily="FAS"
                 x:Name="Price"
-                Text="{Binding Price, StringFormat='Price: 1{0:0 $}'}"
+                Text="{Binding price, StringFormat='Price: 1{0:0 $}'}"
                    Style="{StaticResource LabelMedium}"/>
                 <Label
                  FontFamily="FAS"
@@ -57,7 +57,7 @@
                    Style="{StaticResource LabelMedium}"/>
                 <Label 
                 x:Name="Detail"
-                FontFamily="FAS" Text="{Binding Detail, StringFormat='Detail: {0}'}"
+                FontFamily="FAS" Text="{Binding detail, StringFormat='Detail: {0}'}"
                    Style="{StaticResource LabelMedium}" />
             </FlexLayout>
             <FlexLayout  JustifyContent="Center" Margin="0,40,0,0">

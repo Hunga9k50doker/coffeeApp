@@ -19,10 +19,10 @@ namespace MyCoffeeApp.Views
         {
             InitializeComponent();
             _coffee = cf;
-            name.Text = cf.Name;
-            image.Text = cf.Image;
-            price.Text = (cf.Price).ToString();
-            detail.Text = cf.Detail;
+            name.Text = cf.name;
+            image.Text = cf.image;
+            price.Text = (cf.price).ToString();
+            detail.Text = cf.detail;
             name.Focus();
         }
 
@@ -35,11 +35,11 @@ namespace MyCoffeeApp.Views
             else if (_coffee != null)
             {
                 float.TryParse(price.Text, out float pr);
-                _coffee.Name = name.Text;
-                _coffee.Image = image.Text;
-                _coffee.Price = pr;
-                _coffee.Detail = detail.Text;
-                Console.WriteLine(_coffee.Name);
+                _coffee.name = name.Text;
+                _coffee.image = image.Text;
+                _coffee.price = pr;
+                _coffee.detail = detail.Text;
+                Console.WriteLine(_coffee.name);
                 App.CoffeeDb.EditCoffee(_coffee);
                 await DisplayAlert("Thông báo", $"Sửa thành công!", "OK");
                     await Shell.Current.GoToAsync("..");

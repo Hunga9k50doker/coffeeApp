@@ -19,7 +19,7 @@ namespace MyCoffeeApp.ViewModels
 
         public AsyncCommand<Coffee> FavoriteCommand { get; }
         public AsyncCommand<object> SelectedCommand { get; }
-        public AsyncCommand<object> SelectedDetailCommand { get; }
+        public AsyncCommand<object> SelecteddetailCommand { get; }
 
         public Command LoadMoreCommand { get; }
         public Command DelayLoadMoreCommand { get; }
@@ -38,7 +38,7 @@ namespace MyCoffeeApp.ViewModels
             RefreshCommand = new AsyncCommand(Refresh);
             FavoriteCommand = new AsyncCommand<Coffee>(Favorite);
             SelectedCommand = new AsyncCommand<object>(Selected);
-            SelectedDetailCommand = new AsyncCommand<object>(SelectedDetail);
+            SelecteddetailCommand = new AsyncCommand<object>(Selecteddetail);
             LoadMoreCommand = new Command(LoadMore);
             ClearCommand = new Command(Clear);
             DelayLoadMoreCommand = new Command(DelayLoadMore);
@@ -49,7 +49,7 @@ namespace MyCoffeeApp.ViewModels
             if (coffee == null)
                 return;
 
-            await Application.Current.MainPage.DisplayAlert("Thông báo", "Đã thêm " + coffee.Name + " vào mục yêu thích", "Đóng");
+            await Application.Current.MainPage.DisplayAlert("Thông báo", "Đã thêm " + coffee.name + " vào mục yêu thích", "Đóng");
 
         }
 
@@ -71,11 +71,11 @@ namespace MyCoffeeApp.ViewModels
 
 
             await AppShell.Current.GoToAsync(nameof(AddMyCoffeePage));
-            //await Application.Current.MainPage.DisplayAlert("Selected", coffee.Name, "OK");
+            //await Application.Current.MainPage.DisplayAlert("Selected", coffee.name, "OK");
 
         }
 
-        async Task SelectedDetail(object args)
+        async Task Selecteddetail(object args)
         {
             var coffee = args as Coffee;
             if (coffee == null)
@@ -98,9 +98,9 @@ namespace MyCoffeeApp.ViewModels
         {
             if (Coffee.Count >= 20)
                 return;
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso", Price = 12, Image = "espresso.jpg" });
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso Con Panna", Price = 11, Image = "espresso_con_panna.jpg" });
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Espresso Macchiato", Price = 6, Image = "espresso_macchiato.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso", price = 12, image = "espresso.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso Con Panna", price = 11, image = "espresso_con_panna.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Espresso Macchiato", price = 6, image = "espresso_macchiato.jpg" });
 
             CoffeeGroups.Clear();
 

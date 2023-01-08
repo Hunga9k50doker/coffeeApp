@@ -23,10 +23,6 @@ namespace MyCoffeeApp.Views
 
         protected override  void OnAppearing()
         {
-            //  base.OnAppearing();
-            // var loggedin = true;
-            // if(loggedin)
-            //await Shell.Current.GoToAsync($"//{nameof(OrderPage)}");
 
         }
 

@@ -53,10 +53,10 @@ namespace MyCoffeeApp.Views
         {
              Coffee cf = new Coffee
             {
-                Name = name.Text,
-                Image = image.Text,
-                Price = Convert.ToInt32 (price.Text),
-                Detail = detail.Text,
+                name = name.Text,
+                image = image.Text,
+                price = Convert.ToInt32 (price.Text),
+                detail = detail.Text,
             };
             if (App.CoffeeDb.AddCoffee(cf))
             {

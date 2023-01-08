@@ -8,24 +8,24 @@
     Padding="10">
     <Frame Style="{StaticResource CoffeeCard}" >
         <StackLayout Orientation="Horizontal">
-            <Image Source="{Binding Image}" WidthRequest="60" HeightRequest="60" Aspect="Fill" />
+            <Image Source="{Binding image}" WidthRequest="60" HeightRequest="60" Aspect="Fill" />
             <StackLayout VerticalOptions="Center" Margin="10,0,0,0">
                 <Label
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Name}"
+                        Text="{Binding name}"
                     FontFamily="FAS"
                     FontSize="18"
                         VerticalOptions="Center" />
                 <Label
                       FontFamily="FAS"
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Price, StringFormat='{0:0}$'}"
+                        Text="{Binding price, StringFormat='{0:0}$'}"
                     FontSize="18"
                     TextColor="Brown"
                         VerticalOptions="Center" />
                 <Label
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Detail}"
+                        Text="{Binding detail}"
                         VerticalOptions="Center" 
                         FontSize="16"
                     LineBreakMode="TailTruncation"/>

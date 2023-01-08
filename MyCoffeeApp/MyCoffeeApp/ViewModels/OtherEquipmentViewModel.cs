@@ -49,7 +49,7 @@ namespace MyCoffeeApp.ViewModels
             if (coffee == null)
                 return;
 
-            await Application.Current.MainPage.DisplayAlert("Thông báo", "Đã thêm " + coffee.Name + " vào mục yêu thích", "Đóng");
+            await Application.Current.MainPage.DisplayAlert("Thông báo", "Đã thêm " + coffee.name + " vào mục yêu thích", "Đóng");
 
         }
 
@@ -71,7 +71,7 @@ namespace MyCoffeeApp.ViewModels
 
 
             await AppShell.Current.GoToAsync(nameof(AddMyCoffeePage));
-            //await Application.Current.MainPage.DisplayAlert("Selected", coffee.Name, "OK");
+            //await Application.Current.MainPage.DisplayAlert("Selected", coffee.name, "OK");
 
         }
 
@@ -98,9 +98,9 @@ namespace MyCoffeeApp.ViewModels
         {
             if (Coffee.Count >= 20)
                 return;
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Asian Dolce Latte", Price = 6, Image = "asian_dolce_latte.jpg" });
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Skinny Flavored Latte", Price = 7, Image = "skinny_flavored_latte.jpg" });
-            Coffee.Add(new Coffee { Detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", Name = "Iced Americano", Price = 6, Image = "iced_caffe_americano.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Asian Dolce Latte", price = 6, image = "asian_dolce_latte.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Skinny Flavored Latte", price = 7, image = "skinny_flavored_latte.jpg" });
+            Coffee.Add(new Coffee { detail = "Một loại cà phê mang đến cho bạn cảm giác mới lạ. Độc đáo, giá cả phải chăng, mua ngay.", name = "Iced Americano", price = 6, image = "iced_caffe_americano.jpg" });
             CoffeeGroups.Clear();
             CoffeeGroups.Add(new Grouping<string, Coffee>("", Coffee.Where(c => true)));
         }

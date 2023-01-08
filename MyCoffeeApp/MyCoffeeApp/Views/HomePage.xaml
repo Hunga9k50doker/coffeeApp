@@ -16,7 +16,6 @@
                     Light={StaticResource WindowBackgroundColor}}">
     <ContentPage.BindingContext>
         <viewmodels:CoffeeEquipmentViewModel />
-        <!--<viewmodels:MyCoffeeViewModel />-->
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -28,7 +27,6 @@
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         Style="{StaticResource BaseRefreshView}">
         <!--Horizontal list-->
-        
     <ScrollView>
         <StackLayout>
             <Image Source="brandcoffee.jpg"></Image>
@@ -61,7 +59,7 @@
                                 Dark={StaticResource WindowBackgroundColorDark}, 
                                 Light={StaticResource WindowBackgroundColor}}">
                                 <StackLayout Margin="20,20,10,20" Padding="16" BackgroundColor="#EED39E" VerticalOptions="FillAndExpand"  >
-                                    <Image Source="{Binding Image}" WidthRequest="30" HeightRequest="80" Aspect="AspectFit"
+                                    <Image Source="{Binding image}" WidthRequest="30" HeightRequest="80" Aspect="AspectFit"
                   />
                                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center"
                         >
@@ -69,7 +67,7 @@
                                 WidthRequest="200"
                                             HorizontalTextAlignment="Center"
                                 Style="{StaticResource LabelLarge}"
-                                Text="{Binding Name}"
+                                Text="{Binding name}"
                                 VerticalOptions="Center"
                                />
                                         <FlexLayout AlignContent="Center" JustifyContent="SpaceBetween">
@@ -80,7 +78,7 @@
                                 FontFamily="FAS"
                                 LineBreakMode="TailTruncation"
                                 Style="{StaticResource LabelLarge}"
-                                Text="{Binding Price,StringFormat='{0:0 $}'}"
+                                Text="{Binding price,StringFormat='{0:0 $}'}"
                                 HorizontalTextAlignment="Center"
 
                    />
@@ -89,7 +87,7 @@
                         FontFamily="FAS"
                         LineBreakMode="TailTruncation"
                         Style="{StaticResource LabelLarge}"
-                        Text="{Binding Price,StringFormat='{0:0 $}'}"
+                        Text="5$"
                         VerticalOptions="Center" 
                                             HorizontalTextAlignment="Center"
                    />
@@ -159,7 +157,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                             <Image Grid.Row="0"
-                       Source="{Binding Image}"
+                       Source="{Binding image}"
                        Aspect="AspectFit"
                        HeightRequest="90"
                        WidthRequest="90" />
@@ -168,7 +166,7 @@
                                    TextColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColorDark}}"
-                       Text="{Binding Name}"
+                       Text="{Binding name}"
                        FontAttributes="Bold"
                                        FontSize="Medium"
                                         LineBreakMode="TailTruncation"
@@ -186,7 +184,7 @@
                                         FontFamily="FAS"
                                         TextColor="Black"
                                            FontSize="Medium"
-                                          Text="{Binding Price,StringFormat='{0:0$}'}"
+                                          Text="{Binding price,StringFormat='{0:0$}'}"
                                            />
                                             <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                                     <Image Source="FavouriteBlackIcon.png"

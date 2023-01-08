@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="MyCoffeeApp.Views.MyStoredCoffeePage"
+    x:Class="MyCoffeeApp.Views.MyOderDetailItemPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:MyCoffeeApp.Shared.Models;assembly=MyCoffeeApp.Shared"
     xmlns:mvvm="clr-namespace:MvvmHelpers;assembly=MvvmHelpers"
     xmlns:viewmodels="clr-namespace:MyCoffeeApp.ViewModels"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Name="MyCoffeePage"
-    Title="Mục yêu thích"
+    x:Name="MyOrderPage"
+    Title="Chi tiết đặt hàng"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
@@ -20,7 +20,7 @@
     </ContentPage.Resources>
 
     <ListView
-        x:Name="cvcFavorite"
+        x:Name="cvcOrderDetail"
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         RefreshCommand="{Binding RefreshCommand}"
         SelectionMode="Single"
@@ -29,7 +29,7 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <ViewCell.ContextActions>
+                    <!--<ViewCell.ContextActions>
                         <MenuItem
                             CommandParameter="{Binding .}"
                            Clicked="MenuItem_Clicked"
@@ -39,7 +39,7 @@
                             CommandParameter="{Binding .}"
                            Clicked="MenuItem_Clicked_1"
                             Text="Thêm vào giỏ hàng" />
-                    </ViewCell.ContextActions>
+                    </ViewCell.ContextActions>-->
                     <Grid Padding="10">
                         <Frame  Style="{StaticResource CoffeeCard}">
                             <StackLayout Orientation="Horizontal">
@@ -54,12 +54,21 @@
                                            TextColor="Brown"
                                            FontFamily="FAS"
                                          Style="{StaticResource LabelMedium}"/>
-                                    <Label
+                                    <FlexLayout>
+                                        <Label
                                         FontSize="16"
                                         LineBreakMode="TailTruncation"
                                         Style="{StaticResource LabelLarge}"
-                                        Text="{Binding coffee.detail}"
+                                        Text="Số lượng: "
                                         VerticalOptions="Center" />
+                                        <Label
+                                        FontSize="16"
+                                        LineBreakMode="TailTruncation"
+                                        Style="{StaticResource LabelLarge}"
+                                        Text="{Binding quantity}"
+                                        VerticalOptions="Center" />
+                                    </FlexLayout>
+                                  
                                 </StackLayout>
                             </StackLayout>
                         </Frame>

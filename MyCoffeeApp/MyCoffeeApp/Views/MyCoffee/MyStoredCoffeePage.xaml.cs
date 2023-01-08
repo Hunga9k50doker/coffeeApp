@@ -1,9 +1,11 @@
 ﻿using MyCoffeeApp.Services;
 using MyCoffeeApp.Shared.Models;
 using MyCoffeeApp.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,51 +19,58 @@ namespace MyCoffeeApp.Views
     {
       
         private readonly CoffeeService _cfDatabase = new CoffeeService();
-
+        public List<favouriteDetails> listInit;
         public MyStoredCoffeePage()
         {
             InitializeComponent();
-            List<Favorite> list = _cfDatabase.GetFavorite();
-            cvcFavorite.ItemsSource = list;
+            GetAllCf();
 
         }
+        async void GetAllCf()
+        {
+            HttpClient httpClient = new HttpClient();
 
+            var result = await httpClient.GetStringAsync("http://coffeeapi.somee.com/api/Favourite/" + ((App)App.Current).userId);
+            var kqtv = JsonConvert.DeserializeObject<Favorite>(result);
+            listInit =  kqtv.favouriteDetails;
+            cvcFavorite.ItemsSource = listInit;
+        }
         protected override  void OnAppearing()
         {
             base.OnAppearing();
-            List<Favorite> list = _cfDatabase.GetFavorite();
-            cvcFavorite.ItemsSource = list;
+            GetAllCf();
         }
 
         private async void MenuItem_Clicked(object sender, EventArgs e)
         {
             var mi = ((MenuItem)sender);
-            Favorite cf = (Favorite)mi.CommandParameter;
-            bool answer = await DisplayAlert("Thông báo", $"Bạn có muốn xóa {cf.Name} không?", "Có", "Hủy bỏ");
+            favouriteDetails cf = (favouriteDetails)mi.CommandParameter;
+            bool answer = await DisplayAlert("Thông báo", $"Bạn có muốn xóa không?", "Có", "Hủy bỏ");
             if (answer)
             {
-                App.CoffeeDb.RemoveFav(cf);
-                cvcFavorite.ItemsSource = App.CoffeeDb.GetFavorite();
+                HttpClient httpClient = new HttpClient();
+                await httpClient.DeleteAsync("http://coffeeapi.somee.com/api/Favourite/" + cf.id);
+                await DisplayAlert("Thông báo", $"Đã xóa khỏi mục yêu thích", "Đóng");
+                GetAllCf();
             }
         }
 
         private async void MenuItem_Clicked_1(object sender, EventArgs e)
         {
             var mi = ((MenuItem)sender);
-            Favorite ct = (Favorite)mi.CommandParameter;
-            var cf = new Cart
+            favouriteDetails ct = (favouriteDetails)mi.CommandParameter;
+            Console.WriteLine(ct.coffee.id);
+            var cf = new 
             {
-                Name = ct.Name,
-                Detail = ct.Detail,
-                Image = ct.Image,
-                Price = ct.Price,
-                Count=1,
+                quantity = 1,
+                coffeeId = ct.coffee.id,
+                cartId = ((App)App.Current).cartId,
             };
-            if (App.CoffeeDb.AddCoffeeToCart(cf))
-            {
-                await DisplayAlert("Thông báo", $"Đã thêm {cf.Name} vào giỏ hàng?",  "Đóng");
-            }
-
+            HttpClient http = new HttpClient();
+            string jsonlh = JsonConvert.SerializeObject(cf);
+            StringContent httcontent = new StringContent(jsonlh, Encoding.UTF8, "application/json");
+          await http.PostAsync("http://coffeeapi.somee.com/api/Cart", httcontent);
+            await DisplayAlert("Thông báo", $"Đã thêm vào giỏ hàng.", "Đóng");
         }
     }
 }

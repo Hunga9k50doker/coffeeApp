@@ -38,10 +38,10 @@ namespace MyCoffeeApp.ViewModels
 
             Coffee cf = new Coffee
             {
-                Name = name,
-                Image =image,
-                Price = price,
-                Detail = detail,
+                name = name,
+                image =image,
+                price = price,
+                detail = detail,
             };
             if (App.CoffeeDb.AddCoffee(cf))
             {

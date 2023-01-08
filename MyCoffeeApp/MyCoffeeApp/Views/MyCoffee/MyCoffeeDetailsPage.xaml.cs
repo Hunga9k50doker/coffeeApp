@@ -1,11 +1,13 @@
 ﻿using MyCoffeeApp.Services;
 using MyCoffeeApp.Shared.Models;
 using MyCoffeeApp.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,24 +26,24 @@ namespace MyCoffeeApp.Views
         public Coffee coffee { get; set; }
 
         CoffeeService coffeeService;
-        public MyCoffeeDetailsPage(int id, string name, float price, string detail, string image)
+        public MyCoffeeDetailsPage(Coffee cf)
         {
             InitializeComponent();
-            //coffeeService = DependencyService.Get<CoffeeService>();
-            imagePath=image;
+            imagePath=cf.image;
+            CoffeeId = cf.id;
             coffee = new Coffee
             {
-                id = id,
-            Name = name,
-            Image = image,
-            Price = price,
-            Detail = detail,
-        };
+                id = cf.id,
+                name = cf.name,
+                image = cf.image,
+                price = cf.price,
+                detail = cf.detail,
+            };
 
-            Name.Text =  name;
-            Price.Text = price.ToString();
-            Detail.Text = detail;
-            Image.Source = image;
+            Name.Text =  cf.name;
+            Price.Text = cf.price.ToString();
+            Detail.Text = cf.detail;
+            Image.Source = cf.image;
         }
 
        
@@ -50,17 +52,23 @@ namespace MyCoffeeApp.Views
             int.TryParse(Price.Text, out int res);
             Cart cf = new Cart
             {
-                Name = Name.Text,
-                Image = imagePath,
-                Price = res,
-                Detail = Detail.Text,
-                Count= 1
+                quantity = 1,
+                coffeeId = CoffeeId,
+                cartId = ((App)App.Current).cartId,
             };
-            if (App.CoffeeDb.AddCoffeeToCart(cf))
-            {
-                await DisplayAlert("Thông báo!", $"Đã thêm sản phẩm vào giỏ hàng!", "Đóng");
-                await Shell.Current.GoToAsync("..");
-            }
+          
+            HttpClient http = new HttpClient();
+            string jsonlh = JsonConvert.SerializeObject(cf);
+            StringContent httcontent = new StringContent(jsonlh, Encoding.UTF8, "application/json");
+            await http.PostAsync
+              ("http://coffeeapi.somee.com/api/Cart", httcontent);
+            await DisplayAlert("Thông báo", $"Đã thêm vào giỏ hàng.", "Đóng");
+
+            //if (App.CoffeeDb.AddCoffeeToCart(cf))
+            //{
+            //    await DisplayAlert("Thông báo!", $"Đã thêm sản phẩm vào giỏ hàng!", "Đóng");
+            //    await Shell.Current.GoToAsync("..");
+            //}
         }
         //private async void Button_Clicked_1(object sender, EventArgs e)
         //{
