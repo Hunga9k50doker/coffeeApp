@@ -17,6 +17,8 @@ namespace MyCoffeeApp
         public string favId { get; set; }
         public string cartId { get; set; }
         public string userId { get; set; }
+        public string role { get; set; }
+
         public static string ImageServerPath { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
 
         public App()

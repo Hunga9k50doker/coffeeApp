@@ -17,12 +17,24 @@ namespace MyCoffeeApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        public class ImageCustom
+        {
+            public string url { get; set; }
+        }
+    
         private readonly CoffeeService _cfDatabase = new CoffeeService();
         public List<Coffee> listInit;
         public HomePage()
         {
             InitializeComponent();
             GetAllCf();
+            List<ImageCustom> imageList = new List<ImageCustom>
+            {
+                new ImageCustom(){ url ="bg2.jpg"},
+                new ImageCustom(){ url ="bg3.jpg"},
+                new ImageCustom(){ url ="bg4.jpg"},
+            };
+            carouse.ItemsSource = imageList;
         }
 
         async void GetAllCf()

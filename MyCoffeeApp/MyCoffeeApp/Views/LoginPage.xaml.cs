@@ -39,12 +39,7 @@ namespace MyCoffeeApp.Views
                 password = PasswordEntry.Text
             };
             HttpClient http = new HttpClient();
-            string jsonlh = JsonConvert.SerializeObject(us);
-            StringContent httcontent = new StringContent(jsonlh, Encoding.UTF8, "application/json");
-            HttpResponseMessage kq = await http.PostAsync
-            ("http://coffeeapi.somee.com/api/User/login", httcontent);
-            var kqtv = await kq.Content.ReadAsStringAsync();
-            us = JsonConvert.DeserializeObject<User>(kqtv);
+          
             if (string.IsNullOrWhiteSpace(us.id)|| string.IsNullOrWhiteSpace(UsernameEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
             {
                 await DisplayAlert("Thông báo", "Tên đăng nhập hoặc mật khẩu không chính xác.", "OK");
@@ -52,20 +47,26 @@ namespace MyCoffeeApp.Views
             }
             else if (!string.IsNullOrWhiteSpace(us.id))
             {
-                if (string.IsNullOrWhiteSpace(us.favourite.id))
+                string jsonlh = JsonConvert.SerializeObject(us);
+                StringContent httcontent = new StringContent(jsonlh, Encoding.UTF8, "application/json");
+                HttpResponseMessage kq = await http.PostAsync
+                ("http://coffeeapi.somee.com/api/User/login", httcontent);
+                var kqtv = await kq.Content.ReadAsStringAsync();
+                us = JsonConvert.DeserializeObject<User>(kqtv);
+                if (string.IsNullOrWhiteSpace(us.favourite?.id))
                 {
                 await http.GetStringAsync
                 ("http://coffeeapi.somee.com/api/Favourite/"+ us.id);
                 }
-                if (string.IsNullOrWhiteSpace(us.cart.id))
+                if (string.IsNullOrWhiteSpace(us.cart?.id))
                 {
                 await http.GetStringAsync
                 ("http://coffeeapi.somee.com/api/Cart/"+ us.id);
                 }
                 ((App)App.Current).userId = us.id;
-                ((App)App.Current).favId = us.favourite.id;
-                ((App)App.Current).cartId = us.cart.id;
-
+                ((App)App.Current).favId = us.favourite?.id;
+                ((App)App.Current).cartId = us.cart?.id;
+                ((App)App.Current).role = us.username;
                 await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                 await DisplayAlert("Thông báo", "Đăng nhập thành công.", "OK");
             }

@@ -29,7 +29,15 @@ namespace MyCoffeeApp.Views
         public MyCoffeeDetailsPage(Coffee cf)
         {
             InitializeComponent();
-            imagePath=cf.image;
+            if (((App)App.Current).role == "admin")
+            {
+               editCoffee.Text = "Thêm";
+            }
+            else
+            {
+                editCoffee.Text = "";
+            }
+            imagePath =cf.image;
             CoffeeId = cf.id;
             coffee = new Coffee
             {

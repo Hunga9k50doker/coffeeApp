@@ -77,7 +77,8 @@
                              Glyph="{x:Static fontAwesome:FontAwesomeIcons.CartPlus}"/>
                                     </SwipeItem.IconImageSource>
                                 </SwipeItem>
-                                <!--<SwipeItem
+                                <SwipeItem
+                                    x:Name="delete_name"
                                     BackgroundColor="Red"
                                      Invoked="SwipeItem_Invoked_2"
                                     CommandParameter="{Binding .}"
@@ -87,7 +88,7 @@
                                                            Color="GreenYellow"
                              Glyph="{x:Static fontAwesome:FontAwesomeIcons.Trash}"/>
                                     </SwipeItem.IconImageSource>
-                                </SwipeItem>-->
+                                </SwipeItem>
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <cells:CoffeeCard/>

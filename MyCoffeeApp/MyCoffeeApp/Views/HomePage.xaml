@@ -29,9 +29,22 @@
         <!--Horizontal list-->
     <ScrollView>
         <StackLayout>
-            <Image Source="brandcoffee.jpg"></Image>
+                <CarouselView x:Name="carouse" IndicatorView="IndicatorView" HeightRequest="200">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding url}" Aspect="AspectFill"></Image>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView x:Name="IndicatorView"
+                               IndicatorColor="Gray"
+                               SelectedIndicatorColor="DarkGray"
+                               IndicatorSize="10"
+                               VerticalOptions="Center">
+                    
+                </IndicatorView>
                     <Label
-                        Margin="20,40,0,0"
+                        Margin="20,0,0,0"
                         FontFamily="FAS"
                         HorizontalOptions="Start"
                         Style="{StaticResource LabelMedium}"
@@ -124,7 +137,7 @@
                         FontFamily="FAS"
                         HorizontalOptions="Start"
                         Style="{StaticResource LabelMedium}"
-                        Text="Recommand" />
+                        Text="Recommend" />
                     <BoxView HeightRequest="1" WidthRequest="90"   Margin="20,0,20,0" BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColor}, 
                     Light={StaticResource WindowBackgroundColorDark}}" />
